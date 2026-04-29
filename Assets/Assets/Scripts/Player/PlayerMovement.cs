@@ -1,25 +1,37 @@
 using UnityEngine;
 
-public class PlayerTopDownMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
 
     private Rigidbody2D rb;
     private Vector2 movement;
+    private Animator anim;
+    private SpriteRenderer sr;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
+
+        anim.SetFloat("Speed", movement.magnitude);
+
+        // virar sprite
+        if (movement.x > 0)
+            sr.flipX = false;
+        else if (movement.x < 0)
+            sr.flipX = true;
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocity = movement * speed;
+        rb.linearVelocity = movement.normalized * speed;
     }
 }
