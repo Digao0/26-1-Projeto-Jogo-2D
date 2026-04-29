@@ -58,6 +58,13 @@ public class PlayerHealth : MonoBehaviour
         isKnockedBack = false;
     }
 
+    public void GrantInvulnerability(float duration)
+    {
+        isInvulnerable = true;
+        CancelInvoke(nameof(ResetInvulnerability));
+        Invoke(nameof(ResetInvulnerability), duration);
+    }
+
     void ResetInvulnerability()
     {
         isInvulnerable = false;
