@@ -8,9 +8,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     private Animator anim;
     private SpriteRenderer sr;
+    PlayerHealth health;
 
     void Start()
     {
+        health = GetComponent<PlayerHealth>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (health.isKnockedBack) return;
         rb.linearVelocity = movement.normalized * speed;
     }
 }
