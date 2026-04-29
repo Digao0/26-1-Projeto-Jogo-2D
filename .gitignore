@@ -43,3 +43,5 @@ desktop.ini
 
 # ========== Outros ==========
 *.log
+# Pasta de projeto duplicada
+ProjetoJogo2D/
