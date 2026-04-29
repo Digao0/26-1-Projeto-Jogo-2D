@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage, Transform enemy)
     {
-        if (isInvulnerable) return;
+        if (isInvulnerable || currentHealth <= 0) return;
         isKnockedBack = true;
 
         currentHealth -= damage;
@@ -65,12 +66,35 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Player morreu");
-        // aqui você coloca game over depois
+
+        // trava movimento
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
+
+        // animação de morte
+        anim.SetTrigger("Die");
+
+        // 🔥 pausa o jogo imediatamente
+        Time.timeScale = 0f;
+
+        // espera animação terminar usando tempo real
+        StartCoroutine(GameOverDelay());
     }
     
     public int GetCurrentHealth()
     {
         return currentHealth;
+    }
+    
+    void CallGameOver()
+    {
+        FindObjectOfType<GameManager>().GameOver();
+    }
+    
+    IEnumerator GameOverDelay()
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        CallGameOver();
     }
     
     
