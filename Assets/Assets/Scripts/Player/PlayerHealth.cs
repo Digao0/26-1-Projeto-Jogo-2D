@@ -29,6 +29,8 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= damage;
 
+        GetComponent<PlayerAttack>().ResetAttack();
+
         // animação de dano
         anim.SetTrigger("Hit");
 
