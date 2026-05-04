@@ -2,58 +2,86 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public int damage = 25;
-    public float attackCooldown = 0.4f;
-    public float attackRange = 1.8f;
-    public Vector2 attackSize = new Vector2(1.5f, 1.2f);
-    public float attackIframes = 0.3f;
-
+    public GameObject attackUp;
+    public GameObject attackDown;
+    public GameObject attackLeft;
+    public GameObject attackRight;
     private Animator anim;
-    private SpriteRenderer sr;
-    private PlayerHealth playerHealth;
-    private float cooldownTimer;
-    private Vector2 lastDirection = Vector2.right;
+    private bool canAttack = true;
+    SpriteRenderer sr;
+    public bool isAttacking = false;
+
+    private string lastDirection = "Down";
 
     void Start()
     {
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
-        playerHealth = GetComponent<PlayerHealth>();
     }
-
     void Update()
     {
-        cooldownTimer -= Time.deltaTime;
-
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        if (h != 0 || v != 0)
-            lastDirection = new Vector2(h, v).normalized;
-
-        if (Input.GetMouseButtonDown(0) && cooldownTimer <= 0)
-            Attack();
-    }
-
-    void Attack()
-    {
-        cooldownTimer = attackCooldown;
-        anim.SetTrigger("Attack");
-        playerHealth.GrantInvulnerability(attackIframes);
-
-        Vector2 hitCenter = (Vector2)transform.position + lastDirection * attackRange;
-        Collider2D[] hits = Physics2D.OverlapBoxAll(hitCenter, attackSize, 0f);
-
-        foreach (Collider2D hit in hits)
+        if (!canAttack) return;
+        
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (hit.CompareTag("Enemy"))
-                hit.GetComponent<EnemyHealth>()?.TakeDamage(damage, transform);
+            lastDirection = "Up";
+            AttackTrigger();
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            lastDirection = "Down";
+            AttackTrigger();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            lastDirection = "Left";
+            AttackTrigger();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            lastDirection = "Right";
+            AttackTrigger();
         }
     }
 
-    void OnDrawGizmosSelected()
+    void DisableAll()
     {
-        Gizmos.color = Color.red;
-        Vector2 hitCenter = (Vector2)transform.position + lastDirection * attackRange;
-        Gizmos.DrawWireCube(hitCenter, attackSize);
+        attackUp.SetActive(false);
+        attackDown.SetActive(false);
+        attackLeft.SetActive(false);
+        attackRight.SetActive(false);
+    }
+    
+    public void ActivateHitbox()
+    {
+        CancelInvoke(nameof(DisableAll));
+        DisableAll();
+
+        if (lastDirection == "Up") attackUp.SetActive(true);
+        if (lastDirection == "Down") attackDown.SetActive(true);
+        if (lastDirection == "Left") attackLeft.SetActive(true);
+        if (lastDirection == "Right") attackRight.SetActive(true);
+
+        Invoke(nameof(DisableAll), 0.1f);
+    }
+    
+    void AttackTrigger()
+    {
+        canAttack = false;
+        isAttacking = true;
+        
+        if (lastDirection == "Left") sr.flipX = true;
+        if (lastDirection == "Right") sr.flipX = false;
+        
+        anim.SetTrigger("Attack");
+    }
+
+    public void ResetAttack()
+    {
+        canAttack = true;
+        isAttacking = false;
     }
 }

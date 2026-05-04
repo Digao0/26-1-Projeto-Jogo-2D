@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sr;
     PlayerHealth health;
+    PlayerAttack playerAttack;
 
     void Start()
     {
@@ -16,20 +17,29 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     void Update()
     {
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
+        movement.x = 0;
+        movement.y = 0;
+
+        if (Input.GetKey(KeyCode.A)) movement.x = -1;
+        if (Input.GetKey(KeyCode.D)) movement.x = 1;
+        if (Input.GetKey(KeyCode.W)) movement.y = 1;
+        if (Input.GetKey(KeyCode.S)) movement.y = -1;
 
         anim.SetFloat("Speed", movement.magnitude);
 
         // virar sprite
-        if (movement.x > 0)
-            sr.flipX = false;
-        else if (movement.x < 0)
-            sr.flipX = true;
+        if (!playerAttack.isAttacking)
+        {
+            if (movement.x > 0)
+                sr.flipX = false;
+            else if (movement.x < 0)
+                sr.flipX = true;
+        }
     }
 
     void FixedUpdate()
