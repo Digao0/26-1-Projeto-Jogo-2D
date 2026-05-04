@@ -30,7 +30,7 @@ TagManager:
   - Layer 2
   - Layer 3
   - 
-  - 
+  - Light
   - 
   - 
   - 
@@ -50,6 +50,12 @@ TagManager:
     locked: 0
   - name: Layer 3
     uniqueID: 4189426099
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 3185241537
+    locked: 0
+  - name: Light
+    uniqueID: 3897512135
     locked: 0
   m_RenderingLayers:
   - Default
