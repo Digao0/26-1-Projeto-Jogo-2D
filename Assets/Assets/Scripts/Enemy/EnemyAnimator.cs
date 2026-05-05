@@ -23,6 +23,11 @@ public class EnemyAnimator : MonoBehaviour
         anim.SetTrigger("Hit");
     }
 
+    public void PlayAttack()
+    {
+        anim.SetTrigger("Attack");
+    }
+
     public void PlayDeath(float delay)
     {
         anim.SetTrigger("Die");

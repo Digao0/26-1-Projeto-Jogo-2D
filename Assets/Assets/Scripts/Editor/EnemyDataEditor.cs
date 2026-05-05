@@ -72,19 +72,22 @@ public class EnemyDataEditor : Editor
 
         controller.AddParameter("Speed", AnimatorControllerParameterType.Float);
         controller.AddParameter("Hit", AnimatorControllerParameterType.Trigger);
+        controller.AddParameter("Attack", AnimatorControllerParameterType.Trigger);
         controller.AddParameter("Die", AnimatorControllerParameterType.Trigger);
 
         var sm = controller.layers[0].stateMachine;
 
-        var idle  = sm.AddState("Idle");
-        var walk  = sm.AddState("Walk");
-        var hurt  = sm.AddState("Hurt");
-        var death = sm.AddState("Death");
+        var idle   = sm.AddState("Idle");
+        var walk   = sm.AddState("Walk");
+        var hurt   = sm.AddState("Hurt");
+        var attack = sm.AddState("Attack");
+        var death  = sm.AddState("Death");
 
-        if (data.idleClip  != null) idle.motion  = data.idleClip;
-        if (data.walkClip  != null) walk.motion  = data.walkClip;
-        if (data.hurtClip  != null) hurt.motion  = data.hurtClip;
-        if (data.deathClip != null) death.motion = data.deathClip;
+        if (data.idleClip   != null) idle.motion   = data.idleClip;
+        if (data.walkClip   != null) walk.motion   = data.walkClip;
+        if (data.hurtClip   != null) hurt.motion   = data.hurtClip;
+        if (data.attackClip != null) attack.motion = data.attackClip;
+        if (data.deathClip  != null) death.motion  = data.deathClip;
 
         sm.defaultState = idle;
 
@@ -108,6 +111,17 @@ public class EnemyDataEditor : Editor
         hurtToIdle.hasExitTime = true;
         hurtToIdle.exitTime = 1f;
         hurtToIdle.duration = 0f;
+
+        var anyToAttack = sm.AddAnyStateTransition(attack);
+        anyToAttack.AddCondition(AnimatorConditionMode.If, 0, "Attack");
+        anyToAttack.hasExitTime = false;
+        anyToAttack.duration = 0f;
+        anyToAttack.canTransitionToSelf = false;
+
+        var attackToIdle = attack.AddTransition(idle);
+        attackToIdle.hasExitTime = true;
+        attackToIdle.exitTime = 1f;
+        attackToIdle.duration = 0f;
 
         var anyToDeath = sm.AddAnyStateTransition(death);
         anyToDeath.AddCondition(AnimatorConditionMode.If, 0, "Die");

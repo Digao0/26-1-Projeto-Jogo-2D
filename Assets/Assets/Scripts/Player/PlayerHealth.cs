@@ -97,7 +97,9 @@ public class PlayerHealth : MonoBehaviour
     
     void CallGameOver()
     {
-        FindObjectOfType<GameManager>().GameOver();
+        GameManager gm = FindObjectOfType<GameManager>();
+        if (gm != null)
+            gm.GameOver();
     }
     
     IEnumerator GameOverDelay()

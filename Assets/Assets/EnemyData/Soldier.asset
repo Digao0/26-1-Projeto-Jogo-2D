@@ -23,4 +23,5 @@ MonoBehaviour:
   idleClip: {fileID: 7400000, guid: 1b5b6aece0fd4294096364e6bca8503b, type: 2}
   walkClip: {fileID: 7400000, guid: 9f4818e60fba1e843bf6480ac3061ef7, type: 2}
   hurtClip: {fileID: 7400000, guid: 4d132c103cdaeba45b61443c2a1c83be, type: 2}
+  attackClip: {fileID: 7400000, guid: f3a8d21b9c4e57630b2e1d8a7c5f4902, type: 2}
   deathClip: {fileID: 7400000, guid: 4704d29b8496c754db244a6c9e1a391e, type: 2}

@@ -19,5 +19,6 @@ public class EnemyData : ScriptableObject
     public AnimationClip idleClip;
     public AnimationClip walkClip;
     public AnimationClip hurtClip;
+    public AnimationClip attackClip;
     public AnimationClip deathClip;
 }

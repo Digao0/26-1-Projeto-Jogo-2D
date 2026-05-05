@@ -213,7 +213,7 @@ MonoBehaviour:
   maxHealth: 50
   knockbackForce: 5
   knockbackDuration: 0.3
-  deathAnimDuration: 0.33333334
+  deathAnimDuration: 2
 --- !u!114 &2701327952940766608
 MonoBehaviour:
   m_ObjectHideFlags: 0
