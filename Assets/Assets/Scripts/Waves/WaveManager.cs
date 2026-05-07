@@ -1,53 +1,62 @@
+using System.Collections;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public EnemySpawner enemySpawner;
 
     public int waveNumber = 1;
     public int enemiesPerWave = 3;
+    public int enemiesIncrement = 2;
+    public float timeBetweenWaves = 2f;
 
-    public float spawnRangeX = 10f;
-    public float spawnRangeY = 5f;
-
-    private int enemiesAlive = 0;
+    private int enemiesAlive;
+    private bool isChangingWave;
 
     void Start()
     {
-        StartWave();
-    }
-
-    void Update()
-    {
-        // se não tem inimigos vivos → próxima wave
-        if (enemiesAlive <= 0)
+        if (enemySpawner == null)
         {
-            waveNumber++;
-            enemiesPerWave += 2;
-
-            StartWave();
+            enemySpawner = FindObjectOfType<EnemySpawner>();
         }
+
+        StartWave();
     }
 
     void StartWave()
     {
-        enemiesAlive = enemiesPerWave;
-
-        for (int i = 0; i < enemiesPerWave; i++)
+        if (enemySpawner == null)
         {
-            Vector2 pos = new Vector2(
-                Random.Range(-spawnRangeX, spawnRangeX),
-                Random.Range(-spawnRangeY, spawnRangeY)
-            );
-
-            Instantiate(enemyPrefab, pos, Quaternion.identity);
+            Debug.LogError("WaveManager precisa de um EnemySpawner na cena.");
+            return;
         }
 
-        Debug.Log("Wave " + waveNumber);
+        enemiesAlive = enemiesPerWave;
+        enemySpawner.SpawnEnemies(enemiesPerWave);
+
+        Debug.Log("Wave " + waveNumber + " - Inimigos: " + enemiesPerWave);
     }
 
     public void EnemyDied()
     {
         enemiesAlive--;
+
+        if (enemiesAlive <= 0 && !isChangingWave)
+        {
+            StartCoroutine(NextWave());
+        }
+    }
+
+    IEnumerator NextWave()
+    {
+        isChangingWave = true;
+
+        yield return new WaitForSeconds(timeBetweenWaves);
+
+        waveNumber++;
+        enemiesPerWave += enemiesIncrement;
+
+        StartWave();
+        isChangingWave = false;
     }
 }

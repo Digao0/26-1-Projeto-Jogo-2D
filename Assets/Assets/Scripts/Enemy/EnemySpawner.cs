@@ -3,19 +3,19 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public int numberOfEnemies = 5;
 
     public float spawnRangeX = 10f;
     public float spawnRangeY = 5f;
 
-    void Start()
+    public void SpawnEnemies(int amount)
     {
-        SpawnEnemies();
-    }
+        if (enemyPrefab == null)
+        {
+            Debug.LogError("EnemySpawner precisa de um enemyPrefab configurado.");
+            return;
+        }
 
-    void SpawnEnemies()
-    {
-        for (int i = 0; i < numberOfEnemies; i++)
+        for (int i = 0; i < amount; i++)
         {
             Vector2 spawnPosition = new Vector2(
                 Random.Range(-spawnRangeX, spawnRangeX),

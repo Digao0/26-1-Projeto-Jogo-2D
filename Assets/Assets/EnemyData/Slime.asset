@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba74d9120e219647be53f7a61b1cb99, type: 3}
+  m_Name: Slime
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Enemy
+  defaultSprite: {fileID: 7433934793083656646, guid: dcbfc64f37a501847b4ab17a184327cf,
+    type: 3}
+  maxHealth: 50
+  speed: 2
+  damage: 10
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  idleClip: {fileID: 7400000, guid: 7c224e8d60e0c9f44adf2ee064089795, type: 2}
+  walkClip: {fileID: 7400000, guid: 1d37f7440a01e8442ba6d3bc5bc9b904, type: 2}
+  hurtClip: {fileID: 7400000, guid: 574ada21161ed4d4e9e28a9e03c985a2, type: 2}
+  attackClip: {fileID: 7400000, guid: 217713fe92f8bdd4e8942b2c47fdb698, type: 2}
+  deathClip: {fileID: 7400000, guid: 59e62708c18f0b447a0b0fabdef41174, type: 2}
