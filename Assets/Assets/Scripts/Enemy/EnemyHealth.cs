@@ -58,7 +58,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        FindObjectOfType<WaveManager>().EnemyDied();
+        FindObjectOfType<WaveManager>()?.EnemyDied();
         Destroy(gameObject);
     }
 }
