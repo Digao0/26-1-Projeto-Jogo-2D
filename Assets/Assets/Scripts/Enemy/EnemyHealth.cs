@@ -8,10 +8,8 @@ public class EnemyHealth : MonoBehaviour
     public float deathAnimDuration = 1f;
 
     private int currentHealth;
-    private bool isDead;
     private EnemyFollow enemyFollow;
     private Rigidbody2D rb;
-    private Collider2D enemyCollider;
     private EnemyAnimator enemyAnimator;
 
     void Start()
@@ -19,25 +17,17 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
         enemyFollow = GetComponent<EnemyFollow>();
         rb = GetComponent<Rigidbody2D>();
-        enemyCollider = GetComponent<Collider2D>();
         enemyAnimator = GetComponent<EnemyAnimator>();
     }
 
     public void TakeDamage(int damage, Transform attacker)
     {
-        if (isDead)
-        {
-            return;
-        }
-
         currentHealth -= damage;
-
         if (currentHealth <= 0)
         {
             Die();
             return;
         }
-
         enemyAnimator?.PlayHurt();
         ApplyKnockback(attacker);
     }
@@ -58,44 +48,17 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        if (isDead)
-        {
-            return;
-        }
-
-        isDead = true;
-        CancelInvoke();
-
-        WaveManager waveManager = FindObjectOfType<WaveManager>();
-        if (waveManager != null)
-        {
-            waveManager.EnemyDied();
-        }
-
-        if (enemyFollow != null)
-        {
-            enemyFollow.enabled = false;
-        }
-
-        if (enemyCollider != null)
-        {
-            enemyCollider.enabled = false;
-        }
-
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
-
-        enabled = false;
-
         if (enemyAnimator != null)
         {
+            enemyFollow.enabled = false;
+            enabled = false;
             enemyAnimator.PlayDeath(deathAnimDuration);
         }
         else
         {
             Destroy(gameObject);
         }
+        FindObjectOfType<WaveManager>()?.EnemyDied();
+        Destroy(gameObject);
     }
 }
