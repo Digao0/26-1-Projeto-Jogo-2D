@@ -11,7 +11,9 @@ public class WaveManager : MonoBehaviour
     public float timeBetweenWaves = 2f;
 
     private int enemiesAlive;
+    private int enemiesThisWave;
     private bool isChangingWave;
+    private float nextWaveProgress = 1f;
 
     void Start()
     {
@@ -31,10 +33,13 @@ public class WaveManager : MonoBehaviour
             return;
         }
 
-        enemiesAlive = enemiesPerWave;
-        enemySpawner.SpawnEnemies(enemiesPerWave);
+        enemiesThisWave = enemiesPerWave;
+        enemiesAlive = enemiesThisWave;
+        nextWaveProgress = 1f;
 
-        Debug.Log("Wave " + waveNumber + " - Inimigos: " + enemiesPerWave);
+        enemySpawner.SpawnEnemies(enemiesThisWave);
+
+        Debug.Log("Wave " + waveNumber + " - Inimigos: " + enemiesThisWave);
     }
 
     public void EnemyDied()
@@ -50,13 +55,41 @@ public class WaveManager : MonoBehaviour
     IEnumerator NextWave()
     {
         isChangingWave = true;
+        nextWaveProgress = 0f;
 
-        yield return new WaitForSeconds(timeBetweenWaves);
+        float timer = 0f;
+
+        while (timer < timeBetweenWaves)
+        {
+            timer += Time.deltaTime;
+            nextWaveProgress = Mathf.Clamp01(timer / timeBetweenWaves);
+            yield return null;
+        }
 
         waveNumber++;
         enemiesPerWave += enemiesIncrement;
 
         StartWave();
         isChangingWave = false;
+    }
+
+    public float GetProgressPercent()
+    {
+        if (isChangingWave)
+        {
+            return nextWaveProgress;
+        }
+
+        if (enemiesThisWave <= 0)
+        {
+            return 0f;
+        }
+
+        return Mathf.Clamp01((float)enemiesAlive / enemiesThisWave);
+    }
+
+    public bool IsChangingWave()
+    {
+        return isChangingWave;
     }
 }
