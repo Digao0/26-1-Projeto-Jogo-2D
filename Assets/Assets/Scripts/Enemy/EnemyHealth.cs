@@ -44,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        FindObjectOfType<WaveManager>().EnemyDied();
         Destroy(gameObject);
     }
 }
