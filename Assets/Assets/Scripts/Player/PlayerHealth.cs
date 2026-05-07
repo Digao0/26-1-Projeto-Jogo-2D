@@ -29,6 +29,8 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= damage;
 
+        GetComponent<PlayerAttack>().ResetAttack();
+
         // animação de dano
         anim.SetTrigger("Hit");
 
@@ -95,7 +97,9 @@ public class PlayerHealth : MonoBehaviour
     
     void CallGameOver()
     {
-        FindObjectOfType<GameManager>().GameOver();
+        GameManager gm = FindObjectOfType<GameManager>();
+        if (gm != null)
+            gm.GameOver();
     }
     
     IEnumerator GameOverDelay()

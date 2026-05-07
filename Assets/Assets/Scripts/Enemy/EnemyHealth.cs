@@ -5,16 +5,19 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 50;
     public float knockbackForce = 5f;
     public float knockbackDuration = 0.3f;
+    public float deathAnimDuration = 1f;
 
     private int currentHealth;
     private EnemyFollow enemyFollow;
     private Rigidbody2D rb;
+    private EnemyAnimator enemyAnimator;
 
     void Start()
     {
         currentHealth = maxHealth;
         enemyFollow = GetComponent<EnemyFollow>();
         rb = GetComponent<Rigidbody2D>();
+        enemyAnimator = GetComponent<EnemyAnimator>();
     }
 
     public void TakeDamage(int damage, Transform attacker)
@@ -25,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
             Die();
             return;
         }
+        enemyAnimator?.PlayHurt();
         ApplyKnockback(attacker);
     }
 
@@ -44,6 +48,16 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        if (enemyAnimator != null)
+        {
+            enemyFollow.enabled = false;
+            enabled = false;
+            enemyAnimator.PlayDeath(deathAnimDuration);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         FindObjectOfType<WaveManager>().EnemyDied();
         Destroy(gameObject);
     }
