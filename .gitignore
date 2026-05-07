@@ -17,6 +17,8 @@ MemoryCaptures/
 # ========== IDE (Rider / Visual Studio) ==========
 .idea/
 .vscode/
+.vs/
+.vsconfig
 
 *.csproj
 *.unityproj
