@@ -107,6 +107,18 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSecondsRealtime(1.0f);
         CallGameOver();
     }
-    
+    public void TakeDamageNoKnockback(int damage)
+    {
+        if (isInvulnerable || currentHealth <= 0) return;
+
+        currentHealth -= damage;
+        anim.SetTrigger("Hit");
+
+        isInvulnerable = true;
+        Invoke(nameof(ResetInvulnerability), invulnerabilityTime);
+
+        if (currentHealth <= 0)
+            Die();
+    }
     
 }
