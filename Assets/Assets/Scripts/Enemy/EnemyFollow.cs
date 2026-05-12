@@ -10,14 +10,19 @@ public class EnemyFollow : MonoBehaviour
     private Transform player;
     private Rigidbody2D rb;
     private EnemyAnimator enemyAnimator;
+    private SpriteRenderer sr;
+
     private bool isAttacking;
     private float nextAttackTime;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
         rb = GetComponent<Rigidbody2D>();
         enemyAnimator = GetComponent<EnemyAnimator>();
+
+        // 🔥 pega o sprite (funciona mesmo se estiver em filho)
+        sr = GetComponentInChildren<SpriteRenderer>();
     }
 
     void OnEnable()
@@ -30,7 +35,15 @@ public class EnemyFollow : MonoBehaviour
         if (player == null || isAttacking) return;
 
         Vector2 direction = (player.position - transform.position).normalized;
+
+        // movimento
         rb.linearVelocity = direction * speed;
+
+        // 🔥 virar sprite (resolve moonwalk)
+        if (direction.x > 0)
+            sr.flipX = false;
+        else if (direction.x < 0)
+            sr.flipX = true;
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -45,13 +58,18 @@ public class EnemyFollow : MonoBehaviour
     IEnumerator AttackRoutine(GameObject playerGo)
     {
         isAttacking = true;
+
+        // parar movimento
         rb.linearVelocity = Vector2.zero;
+
         enemyAnimator?.PlayAttack();
 
         yield return new WaitForSeconds(0.25f);
+
         playerGo?.GetComponent<PlayerHealth>()?.TakeDamage(damage, transform);
 
         yield return new WaitForSeconds(0.25f);
+
         isAttacking = false;
     }
 }

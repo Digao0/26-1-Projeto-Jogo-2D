@@ -1,19 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
+[System.Serializable]
+public class Wave
+{
+    public int slime;
+    public int orc;
+    public int rider;
+    public int armored;
+    public int elite;
+}
+
 public class WaveManager : MonoBehaviour
 {
     public EnemySpawner enemySpawner;
 
+    public Wave[] waves;
+
     public int waveNumber = 1;
-    public int enemiesPerWave = 3;
-    public int enemiesIncrement = 2;
     public float timeBetweenWaves = 2f;
 
     private int enemiesAlive;
     private int enemiesThisWave;
     private bool isChangingWave;
     private float nextWaveProgress = 1f;
+    public bool isFinished = false;
 
     void Start()
     {
@@ -33,13 +44,38 @@ public class WaveManager : MonoBehaviour
             return;
         }
 
-        enemiesThisWave = enemiesPerWave;
-        enemiesAlive = enemiesThisWave;
+        if (waveNumber - 1 >= waves.Length)
+        {
+            Debug.Log("Fim da fase");
+            isFinished = true;
+            return;
+        }
+
+        Wave currentWave = waves[waveNumber - 1];
+
+        enemiesAlive = 0;
+
+        // Spawn por tipo
+        SpawnAndCount("Slime", currentWave.slime);
+        SpawnAndCount("Orc", currentWave.orc);
+        SpawnAndCount("Rider", currentWave.rider);
+        SpawnAndCount("Armored", currentWave.armored);
+        SpawnAndCount("Elite", currentWave.elite);
+
+        enemiesThisWave = enemiesAlive;
+
         nextWaveProgress = 1f;
 
-        enemySpawner.SpawnEnemies(enemiesThisWave);
-
         Debug.Log("Wave " + waveNumber + " - Inimigos: " + enemiesThisWave);
+    }
+
+    void SpawnAndCount(string type, int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            enemySpawner.SpawnSpecific(type);
+            enemiesAlive++;
+        }
     }
 
     public void EnemyDied()
@@ -67,7 +103,6 @@ public class WaveManager : MonoBehaviour
         }
 
         waveNumber++;
-        enemiesPerWave += enemiesIncrement;
 
         StartWave();
         isChangingWave = false;

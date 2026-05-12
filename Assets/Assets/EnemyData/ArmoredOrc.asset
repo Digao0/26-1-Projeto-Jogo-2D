@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba74d9120e219647be53f7a61b1cb99, type: 3}
+  m_Name: ArmoredOrc
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: ArmoredOrc
+  defaultSprite: {fileID: -4391229105808040339, guid: cc2ac7dbfabb2d1489a64040bf9a0589,
+    type: 3}
+  maxHealth: 50
+  speed: 2
+  damage: 10
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  idleClip: {fileID: 7400000, guid: 236f4e789d04a024ba711ebec4aa294c, type: 2}
+  walkClip: {fileID: 7400000, guid: 36d332644e231b74eb60b077c4abec83, type: 2}
+  hurtClip: {fileID: 7400000, guid: 3828ee009c938a544b44ef2434496282, type: 2}
+  attackClip: {fileID: 7400000, guid: df5b8eb2e7a6881448857fd6f90dda47, type: 2}
+  deathClip: {fileID: 7400000, guid: 9275519e692b6ee4c8a6e40e647d1d0b, type: 2}

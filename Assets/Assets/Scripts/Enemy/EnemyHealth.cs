@@ -48,17 +48,22 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        enemyFollow.enabled = false;
+        enabled = false;
+
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
+        GetComponent<Collider2D>().enabled = false;
+
         if (enemyAnimator != null)
         {
-            enemyFollow.enabled = false;
-            enabled = false;
             enemyAnimator.PlayDeath(deathAnimDuration);
         }
         else
         {
             Destroy(gameObject);
         }
+
         FindObjectOfType<WaveManager>()?.EnemyDied();
-        Destroy(gameObject);
     }
 }

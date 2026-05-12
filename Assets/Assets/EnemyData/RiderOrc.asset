@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba74d9120e219647be53f7a61b1cb99, type: 3}
+  m_Name: RiderOrc
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: RiderOrc
+  defaultSprite: {fileID: 4762972965759509545, guid: 8e6e08f55c29fff4da3e595d346a24df,
+    type: 3}
+  maxHealth: 50
+  speed: 2
+  damage: 10
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  idleClip: {fileID: 7400000, guid: d9c0605a9d2d5d346ab6452f0d3112bb, type: 2}
+  walkClip: {fileID: 7400000, guid: 1bdbeea11d9c1fc4a86b22413f89c25c, type: 2}
+  hurtClip: {fileID: 7400000, guid: 94257ef73b296ec4598b48503875b89b, type: 2}
+  attackClip: {fileID: 7400000, guid: 023ba44ba37ad74468b071cd87280cca, type: 2}
+  deathClip: {fileID: 7400000, guid: cf48cc49b74681f45bb2167f73f74a66, type: 2}
