@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     PlayerHealth health;
     PlayerAttack playerAttack;
 
+    private float speedMultiplier = 1f;
+
     void Start()
     {
         health = GetComponent<PlayerHealth>();
@@ -32,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetFloat("Speed", movement.magnitude);
 
-        // virar sprite
         if (!playerAttack.isAttacking)
         {
             if (movement.x > 0)
@@ -45,6 +46,18 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (health.isKnockedBack) return;
-        rb.linearVelocity = movement.normalized * speed;
+        rb.linearVelocity = movement.normalized * speed * speedMultiplier;
+    }
+
+    public void AplicarLentidao(float fator, float duracao)
+    {
+        speedMultiplier = fator;
+        CancelInvoke(nameof(ResetVelocidade));
+        Invoke(nameof(ResetVelocidade), duracao);
+    }
+
+    void ResetVelocidade()
+    {
+        speedMultiplier = 1f;
     }
 }
