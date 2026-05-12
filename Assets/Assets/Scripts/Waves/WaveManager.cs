@@ -9,6 +9,8 @@ public class Wave
     public int rider;
     public int armored;
     public int elite;
+    public int soldier;
+    public int skeleton;
 }
 
 public class WaveManager : MonoBehaviour
@@ -61,6 +63,8 @@ public class WaveManager : MonoBehaviour
         SpawnAndCount("Rider", currentWave.rider);
         SpawnAndCount("Armored", currentWave.armored);
         SpawnAndCount("Elite", currentWave.elite);
+        SpawnAndCount("Soldier", currentWave.soldier);
+        SpawnAndCount("Skeleton", currentWave.skeleton);
 
         enemiesThisWave = enemiesAlive;
 

@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject riderPrefab;
     public GameObject armoredPrefab;
     public GameObject elitePrefab;
+    public GameObject soldierPrefab;
+    public GameObject skeletonPrefab;
 
     public float spawnRangeX = 10f;
     public float spawnRangeY = 5f;
@@ -43,6 +45,8 @@ public class EnemySpawner : MonoBehaviour
             case "Rider": prefab = riderPrefab; break;
             case "Armored": prefab = armoredPrefab; break;
             case "Elite": prefab = elitePrefab; break;
+            case "Soldier": prefab = soldierPrefab; break;
+            case "Skeleton": prefab = skeletonPrefab; break;
         }
 
         if (prefab == null) return;

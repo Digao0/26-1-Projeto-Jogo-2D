@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba74d9120e219647be53f7a61b1cb99, type: 3}
+  m_Name: Skeleton
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Skeleton
+  defaultSprite: {fileID: 303854554312539980, guid: 66abf144017de034eafe5744d7cac774,
+    type: 3}
+  maxHealth: 50
+  speed: 2
+  damage: 10
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  idleClip: {fileID: 7400000, guid: 38e0c0c1459bde741817fe4da16ea260, type: 2}
+  walkClip: {fileID: 7400000, guid: 05eb36b8ac78c9746b0d4139adeb7713, type: 2}
+  hurtClip: {fileID: 7400000, guid: 832f84d5fba01244cb4580d9f768652b, type: 2}
+  attackClip: {fileID: 7400000, guid: d994a96d2841683478269a17c687c2b7, type: 2}
+  deathClip: {fileID: 7400000, guid: bcc31f1f5e69fc14ebbbb9f6884132a6, type: 2}
