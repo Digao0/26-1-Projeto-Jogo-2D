@@ -106,10 +106,12 @@ public class PlayerAttack : MonoBehaviour
     {
         canAttack = false;
         isAttacking = true;
-        
-        if (lastDirection == "Left") sr.flipX = true;
-        if (lastDirection == "Right") sr.flipX = false;
-        
+
+        if (lastDirection == "Left")  { sr.flipX = true;  transform.rotation = Quaternion.identity; }
+        if (lastDirection == "Right") { sr.flipX = false; transform.rotation = Quaternion.identity; }
+        if (lastDirection == "Up")    { sr.flipX = false; transform.rotation = Quaternion.Euler(0, 0, 90); }
+        if (lastDirection == "Down")  { sr.flipX = false; transform.rotation = Quaternion.Euler(0, 0, -90); }
+
         anim.SetTrigger("Attack");
     }
 
@@ -117,5 +119,6 @@ public class PlayerAttack : MonoBehaviour
     {
         canAttack = true;
         isAttacking = false;
+        transform.rotation = Quaternion.identity;
     }
 }
