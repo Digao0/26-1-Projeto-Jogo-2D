@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -12,6 +13,39 @@ public class PlayerAttack : MonoBehaviour
     public bool isAttacking = false;
 
     private string lastDirection = "Down";
+
+    [Header("Power-up de Dano")]
+    public float damageMultiplier = 1f;
+    public AudioClip boostMusic;
+    private Coroutine boostCoroutine;
+
+    public void ActivateDamageBoost(float duration)
+    {
+        if (boostCoroutine != null) StopCoroutine(boostCoroutine);
+        boostCoroutine = StartCoroutine(DamageBoostRoutine(duration));
+    }
+
+    IEnumerator DamageBoostRoutine(float duration)
+    {
+        damageMultiplier = 2f;
+
+        GameObject audioObj = null;
+        if (boostMusic != null)
+        {
+            audioObj = new GameObject("BoostMusic");
+            audioObj.transform.SetParent(transform);
+            AudioSource src = audioObj.AddComponent<AudioSource>();
+            src.clip = boostMusic;
+            src.loop = true;
+            src.Play();
+        }
+
+        yield return new WaitForSeconds(duration);
+
+        damageMultiplier = 1f;
+        boostCoroutine = null;
+        if (audioObj != null) Destroy(audioObj);
+    }
 
     void Start()
     {

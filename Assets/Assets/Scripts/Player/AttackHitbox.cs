@@ -12,7 +12,9 @@ public class AttackHitbox : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.TakeDamage(damage, transform);
+                PlayerAttack pa = GetComponentInParent<PlayerAttack>();
+                float mult = pa != null ? pa.damageMultiplier : 1f;
+                enemy.TakeDamage(Mathf.RoundToInt(damage * mult), transform);
             }
         }
     }
