@@ -94,6 +94,11 @@ public class PlayerHealth : MonoBehaviour
     {
         return currentHealth;
     }
+
+    public void Heal(int amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+    }
     
     void CallGameOver()
     {

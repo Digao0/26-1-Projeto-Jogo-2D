@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
     public float knockbackForce = 5f;
     public float knockbackDuration = 0.3f;
     public float deathAnimDuration = 1f;
+    public GameObject dropPrefab;
 
     private int currentHealth;
     private EnemyFollow enemyFollow;
@@ -63,6 +64,9 @@ public class EnemyHealth : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (dropPrefab != null)
+            Instantiate(dropPrefab, transform.position, Quaternion.identity);
 
         FindObjectOfType<WaveManager>()?.EnemyDied();
     }
