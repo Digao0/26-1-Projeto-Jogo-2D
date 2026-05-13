@@ -215,6 +215,8 @@ MonoBehaviour:
   knockbackForce: 5
   knockbackDuration: 0.3
   deathAnimDuration: 0.8333333
+  dropPrefab: {fileID: 6680679335624959637, guid: e6113688cab3306439f0db2c9f472b8e,
+    type: 3}
 --- !u!114 &5004499361852851235
 MonoBehaviour:
   m_ObjectHideFlags: 0
