@@ -17,6 +17,13 @@ public class Wave
     public int knightTemplar;
     public int werewolf;
     public int soldier;
+
+    // CAVERNA 🔥
+    public int skeleton;
+    public int armoredSkeleton;
+    public int werebear;
+    public int greatswordSkeleton;
+    public int skeletonArcher;
 }
 
 public class WaveManager : MonoBehaviour
@@ -71,8 +78,14 @@ public class WaveManager : MonoBehaviour
         SpawnAndCount("Werewolf", currentWave.werewolf);
         SpawnAndCount("Soldier", currentWave.soldier);
 
-        enemiesThisWave = enemiesAlive;
+        // CAVERNA 🔥
+        SpawnAndCount("Skeleton", currentWave.skeleton);
+        SpawnAndCount("ArmoredSkeleton", currentWave.armoredSkeleton);
+        SpawnAndCount("Werebear", currentWave.werebear);
+        SpawnAndCount("GreatswordSkeleton", currentWave.greatswordSkeleton);
+        SpawnAndCount("SkeletonArcher", currentWave.skeletonArcher);
 
+        enemiesThisWave = enemiesAlive;
         nextWaveProgress = 1f;
 
         Debug.Log("Wave " + waveNumber + " - Inimigos: " + enemiesThisWave);
@@ -114,7 +127,6 @@ public class WaveManager : MonoBehaviour
         }
 
         waveNumber++;
-
         StartWave();
         isChangingWave = false;
     }
@@ -122,14 +134,10 @@ public class WaveManager : MonoBehaviour
     public float GetProgressPercent()
     {
         if (isChangingWave)
-        {
             return nextWaveProgress;
-        }
 
         if (enemiesThisWave <= 0)
-        {
             return 0f;
-        }
 
         return Mathf.Clamp01((float)enemiesAlive / enemiesThisWave);
     }
@@ -139,7 +147,6 @@ public class WaveManager : MonoBehaviour
         return isChangingWave;
     }
 
-    // 🔥 pra UI
     public int GetTotalWaves()
     {
         return waves.Length;

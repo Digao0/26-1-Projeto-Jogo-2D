@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba74d9120e219647be53f7a61b1cb99, type: 3}
+  m_Name: SkeletonArcher
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Archer
+  defaultSprite: {fileID: 9041428293049349298, guid: fb7ac8b593f008f4d8bd1891fe48b1ba,
+    type: 3}
+  maxHealth: 50
+  speed: 2
+  damage: 10
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  idleClip: {fileID: 7400000, guid: 76a8aad346e598244bc50b97e7d11a45, type: 2}
+  walkClip: {fileID: 7400000, guid: ed2a77b959648a1478ff1d5a4842a041, type: 2}
+  hurtClip: {fileID: 7400000, guid: 62635d6e1bac5b9468c9cd08100ecd18, type: 2}
+  attackClip: {fileID: 7400000, guid: 7257b657e802b30469d7aecbd09bd936, type: 2}
+  deathClip: {fileID: 7400000, guid: 9fc3b15623722da4e95e393bdd294b0e, type: 2}

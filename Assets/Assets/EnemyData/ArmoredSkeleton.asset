@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba74d9120e219647be53f7a61b1cb99, type: 3}
+  m_Name: ArmoredSkeleton
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: ArmoredSkeleton
+  defaultSprite: {fileID: 7792352775276265700, guid: debf630d85b30094d9253dbdd0857117,
+    type: 3}
+  maxHealth: 50
+  speed: 2
+  damage: 10
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  idleClip: {fileID: 7400000, guid: 866b2c0a06631944ba001a27fb1cb507, type: 2}
+  walkClip: {fileID: 7400000, guid: 3e29475e86ea50a4b8b25626e5b92302, type: 2}
+  hurtClip: {fileID: 7400000, guid: 1072795b338cc6b4ca490a2e02165084, type: 2}
+  attackClip: {fileID: 7400000, guid: c2afb76335ceddb459e809074138c7ae, type: 2}
+  deathClip: {fileID: 7400000, guid: 17b5e4619b327f64dab5e54f5f64d453, type: 2}

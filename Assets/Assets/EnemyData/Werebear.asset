@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba74d9120e219647be53f7a61b1cb99, type: 3}
+  m_Name: Werebear
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Werebear
+  defaultSprite: {fileID: -195695515886222138, guid: 052164b8efc267b4e941592960812645,
+    type: 3}
+  maxHealth: 50
+  speed: 2
+  damage: 10
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  idleClip: {fileID: 7400000, guid: 12a27f976aa0dba4f8b22e9715b0a8cc, type: 2}
+  walkClip: {fileID: 7400000, guid: 3ab65c54aa161494bb8e29f91b1c7e25, type: 2}
+  hurtClip: {fileID: 7400000, guid: 06e3d573e6b83a64eb6197e582f6f766, type: 2}
+  attackClip: {fileID: 7400000, guid: 946cb1ee68404b74a9c1a00b885fea37, type: 2}
+  deathClip: {fileID: 7400000, guid: 49a0ea86a8ad6af49a29a4daeb3249c6, type: 2}

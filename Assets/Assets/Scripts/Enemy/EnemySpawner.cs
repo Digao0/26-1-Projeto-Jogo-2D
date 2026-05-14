@@ -10,15 +10,19 @@ public class EnemySpawner : MonoBehaviour
     public GameObject armoredPrefab;
     public GameObject elitePrefab;
 
-    // ===== EXTRA =====
-    public GameObject soldierPrefab;
-    public GameObject skeletonPrefab;
-
     // ===== CASTELO =====
     public GameObject armoredAxemanPrefab;
     public GameObject lancerPrefab;
     public GameObject knightTemplarPrefab;
     public GameObject werewolfPrefab;
+    public GameObject soldierPrefab;
+
+    // ===== CAVERNA 🔥 =====
+    public GameObject armoredSkeletonPrefab;
+    public GameObject werebearPrefab;
+    public GameObject greatswordSkeletonPrefab;
+    public GameObject skeletonArcherPrefab;
+    public GameObject SkeletonPrefab;
 
     public float spawnRangeX = 10f;
     public float spawnRangeY = 5f;
@@ -54,15 +58,19 @@ public class EnemySpawner : MonoBehaviour
             case "Armored": prefab = armoredPrefab; break;
             case "Elite": prefab = elitePrefab; break;
 
-            // EXTRA
-            case "Soldier": prefab = soldierPrefab; break;
-            case "Skeleton": prefab = skeletonPrefab; break;
-
-            // CASTELO 🔥
+            // CASTELO
             case "ArmoredAxeman": prefab = armoredAxemanPrefab; break;
             case "Lancer": prefab = lancerPrefab; break;
             case "KnightTemplar": prefab = knightTemplarPrefab; break;
             case "Werewolf": prefab = werewolfPrefab; break;
+            case "Soldier": prefab = soldierPrefab; break;
+
+            // CAVERNA 🔥
+            case "Skeleton": prefab = SkeletonPrefab; break;
+            case "ArmoredSkeleton": prefab = armoredSkeletonPrefab; break;
+            case "Werebear": prefab = werebearPrefab; break;
+            case "GreatswordSkeleton": prefab = greatswordSkeletonPrefab; break;
+            case "SkeletonArcher": prefab = skeletonArcherPrefab; break;
         }
 
         if (prefab == null)
