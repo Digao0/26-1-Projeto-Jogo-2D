@@ -10493,6 +10493,75 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &546345047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 546345049}
+  - component: {fileID: 546345048}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &546345048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546345047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837086e79a21447408d9bc39c85678b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveManager
+  enemySpawner: {fileID: 639948058}
+  waves:
+  - slime: 0
+    orc: 0
+    rider: 0
+    armored: 0
+    elite: 0
+    armoredAxeman: 1
+    lancer: 1
+    knightTemplar: 1
+    werewolf: 0
+    soldier: 0
+  - slime: 0
+    orc: 0
+    rider: 0
+    armored: 0
+    elite: 0
+    armoredAxeman: 0
+    lancer: 0
+    knightTemplar: 0
+    werewolf: 1
+    soldier: 1
+  waveNumber: 1
+  timeBetweenWaves: 2
+  isFinished: 0
+--- !u!4 &546345049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546345047}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.57894, y: -0.83197, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &551392653
 GameObject:
   m_ObjectHideFlags: 0
@@ -25680,7 +25749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArrowIndicator
   player: {fileID: 1167600495}
   target: {fileID: 2131252213}
-  waveManager: {fileID: 0}
+  waveManager: {fileID: 546345048}
 --- !u!114 &1216230370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151885,60 +151954,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6984001074425658295}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1567250278
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1567250280}
-  - component: {fileID: 1567250281}
-  m_Layer: 0
-  m_Name: WaveManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1567250280
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1567250278}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1567250281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1567250278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42aa872d7181a324c9774463a2d4a1ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CastleWaveManager
-  enemySpawner: {fileID: 0}
-  waves:
-  - lancer: 1
-    werewolf: 1
-    armoredAxeman: 1
-    knightTemplar: 1
-    soldier: 1
-  waveNumber: 1
-  timeBetweenWaves: 2
-  isFinished: 0
 --- !u!1 &1581110311
 GameObject:
   m_ObjectHideFlags: 0
@@ -154825,7 +154840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4041a852960144d8fefcf4573eb153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIWave
-  waveManager: {fileID: 0}
+  waveManager: {fileID: 546345048}
   waveText: {fileID: 766992963}
   progressBar: {fileID: 758904546}
 --- !u!1 &1857560452
@@ -161879,6 +161894,6 @@ SceneRoots:
   - {fileID: 1309905074}
   - {fileID: 2095118560}
   - {fileID: 639948059}
-  - {fileID: 1567250280}
   - {fileID: 2131252213}
   - {fileID: 887615727}
+  - {fileID: 546345049}
