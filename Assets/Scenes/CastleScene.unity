@@ -10529,15 +10529,21 @@ MonoBehaviour:
     rider: 0
     armored: 0
     elite: 0
+    armoredAxeman: 1
+    lancer: 1
+    knightTemplar: 1
+    werewolf: 0
     soldier: 0
-    skeleton: 0
   - slime: 0
     orc: 0
     rider: 0
     armored: 0
     elite: 0
+    armoredAxeman: 0
+    lancer: 0
+    knightTemplar: 0
+    werewolf: 1
     soldier: 1
-    skeleton: 0
   waveNumber: 1
   timeBetweenWaves: 2
   isFinished: 0
@@ -11556,9 +11562,16 @@ MonoBehaviour:
   riderPrefab: {fileID: 0}
   armoredPrefab: {fileID: 0}
   elitePrefab: {fileID: 0}
+  armoredAxemanPrefab: {fileID: 8571572558795923738, guid: e8c423e9b3ea9164c96689bfab6f0e89,
+    type: 3}
+  lancerPrefab: {fileID: 5539269756399632721, guid: c3a51357b84ffbf44b7fa69aa639bddc,
+    type: 3}
+  knightTemplarPrefab: {fileID: 516168455542314516, guid: 2a7b4487ac4cbf940991bd76d5859c74,
+    type: 3}
+  werewolfPrefab: {fileID: 1361927362700141302, guid: d0743ae5fefac6a4f85f262483aa57a6,
+    type: 3}
   soldierPrefab: {fileID: 153424901317328494, guid: bb37ca0fb4286fb45901bd51171f1f62,
     type: 3}
-  skeletonPrefab: {fileID: 0}
   spawnRangeX: 8
   spawnRangeY: 4
 --- !u!4 &639948059

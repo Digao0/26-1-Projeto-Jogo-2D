@@ -57294,11 +57294,16 @@ MonoBehaviour:
   knightTemplarPrefab: {fileID: 0}
   werewolfPrefab: {fileID: 0}
   soldierPrefab: {fileID: 0}
-  armoredSkeletonPrefab: {fileID: 0}
-  werebearPrefab: {fileID: 0}
-  greatswordSkeletonPrefab: {fileID: 0}
-  skeletonArcherPrefab: {fileID: 0}
-  SkeletonPrefab: {fileID: 0}
+  armoredSkeletonPrefab: {fileID: 6291896116867655758, guid: 960776bb590aa1e4682355777f7a0b1d,
+    type: 3}
+  werebearPrefab: {fileID: 872357354038396348, guid: c3f7b6e5336c081438f863848aaf5e33,
+    type: 3}
+  greatswordSkeletonPrefab: {fileID: 5713418759687812755, guid: 00f640db17603d444bf104fc052852f6,
+    type: 3}
+  skeletonArcherPrefab: {fileID: 771369500178488986, guid: 7dce3220cdebfe344b92a90f40eec43f,
+    type: 3}
+  SkeletonPrefab: {fileID: 657403537824033094, guid: 35f282f5cb1e44e48a185c33a3c2331c,
+    type: 3}
   spawnRangeX: 8
   spawnRangeY: 4
 --- !u!4 &975549074
@@ -62558,8 +62563,8 @@ MonoBehaviour:
     werewolf: 0
     soldier: 0
     skeleton: 1
-    armoredSkeleton: 0
-    werebear: 0
+    armoredSkeleton: 1
+    werebear: 1
     greatswordSkeleton: 0
     skeletonArcher: 0
   - slime: 0
@@ -62575,8 +62580,8 @@ MonoBehaviour:
     skeleton: 0
     armoredSkeleton: 0
     werebear: 0
-    greatswordSkeleton: 0
-    skeletonArcher: 0
+    greatswordSkeleton: 1
+    skeletonArcher: 1
   waveNumber: 1
   timeBetweenWaves: 3
   isFinished: 0
