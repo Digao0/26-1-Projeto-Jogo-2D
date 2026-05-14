@@ -56404,7 +56404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59001efac6aa1d042a887a3d72045293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextSceneTrigger
-  sceneName: 
+  sceneName: EndGame
   waveManager: {fileID: 1852389166}
 --- !u!61 &841539190
 BoxCollider2D:

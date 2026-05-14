@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CaveScene.unity
     guid: dc9c29bef6915d1468b4a265a7f52965
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 0cb68a8288fdf3940aab41cd1744c756
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
