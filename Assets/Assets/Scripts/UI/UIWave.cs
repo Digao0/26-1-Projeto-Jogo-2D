@@ -23,7 +23,7 @@ public class UIWave : MonoBehaviour
             progressBar.SetActive(true);
 
         int current = waveManager.waveNumber;
-        int total = waveManager.waves.Length;
+        int total = waveManager.GetTotalWaves();
 
         waveText.text = "Wave " + current + " / " + total;
     }

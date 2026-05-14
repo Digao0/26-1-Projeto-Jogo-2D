@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba74d9120e219647be53f7a61b1cb99, type: 3}
+  m_Name: Werewolf
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: Werewolf
+  defaultSprite: {fileID: -6702294005266946484, guid: e4bf0679d1efe7641968c67ea5e867d3,
+    type: 3}
+  maxHealth: 50
+  speed: 2
+  damage: 10
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  idleClip: {fileID: 7400000, guid: e1205f86ebe6a8a4fb8726d0db6353d7, type: 2}
+  walkClip: {fileID: 7400000, guid: 25f31682edefd1b43b69af14f010f0f7, type: 2}
+  hurtClip: {fileID: 7400000, guid: cf02e9ea21cb78b428437cbe0ea549f4, type: 2}
+  attackClip: {fileID: 7400000, guid: da32e0c5ee26d904ea39c3c9a0f20186, type: 2}
+  deathClip: {fileID: 7400000, guid: 9dcc8a1421fa68f4ea5251c635d78884, type: 2}

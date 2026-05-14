@@ -4,19 +4,24 @@ using UnityEngine;
 [System.Serializable]
 public class Wave
 {
+    // FLORESTA
     public int slime;
     public int orc;
     public int rider;
     public int armored;
     public int elite;
+
+    // CASTELO
+    public int armoredAxeman;
+    public int lancer;
+    public int knightTemplar;
+    public int werewolf;
     public int soldier;
-    public int skeleton;
 }
 
 public class WaveManager : MonoBehaviour
 {
     public EnemySpawner enemySpawner;
-
     public Wave[] waves;
 
     public int waveNumber = 1;
@@ -26,6 +31,7 @@ public class WaveManager : MonoBehaviour
     private int enemiesThisWave;
     private bool isChangingWave;
     private float nextWaveProgress = 1f;
+
     public bool isFinished = false;
 
     void Start()
@@ -40,12 +46,6 @@ public class WaveManager : MonoBehaviour
 
     void StartWave()
     {
-        if (enemySpawner == null)
-        {
-            Debug.LogError("WaveManager precisa de um EnemySpawner na cena.");
-            return;
-        }
-
         if (waveNumber - 1 >= waves.Length)
         {
             Debug.Log("Fim da fase");
@@ -57,14 +57,19 @@ public class WaveManager : MonoBehaviour
 
         enemiesAlive = 0;
 
-        // Spawn por tipo
+        // FLORESTA
         SpawnAndCount("Slime", currentWave.slime);
         SpawnAndCount("Orc", currentWave.orc);
         SpawnAndCount("Rider", currentWave.rider);
         SpawnAndCount("Armored", currentWave.armored);
         SpawnAndCount("Elite", currentWave.elite);
+
+        // CASTELO
+        SpawnAndCount("ArmoredAxeman", currentWave.armoredAxeman);
+        SpawnAndCount("Lancer", currentWave.lancer);
+        SpawnAndCount("KnightTemplar", currentWave.knightTemplar);
+        SpawnAndCount("Werewolf", currentWave.werewolf);
         SpawnAndCount("Soldier", currentWave.soldier);
-        SpawnAndCount("Skeleton", currentWave.skeleton);
 
         enemiesThisWave = enemiesAlive;
 
@@ -75,6 +80,8 @@ public class WaveManager : MonoBehaviour
 
     void SpawnAndCount(string type, int amount)
     {
+        if (amount <= 0) return;
+
         for (int i = 0; i < amount; i++)
         {
             enemySpawner.SpawnSpecific(type);
@@ -86,7 +93,7 @@ public class WaveManager : MonoBehaviour
     {
         enemiesAlive--;
 
-        if (enemiesAlive <= 0 && !isChangingWave)
+        if (enemiesAlive <= 0 && !isChangingWave && !isFinished)
         {
             StartCoroutine(NextWave());
         }
@@ -130,5 +137,11 @@ public class WaveManager : MonoBehaviour
     public bool IsChangingWave()
     {
         return isChangingWave;
+    }
+
+    // 🔥 pra UI
+    public int GetTotalWaves()
+    {
+        return waves.Length;
     }
 }

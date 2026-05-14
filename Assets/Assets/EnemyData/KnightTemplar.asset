@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba74d9120e219647be53f7a61b1cb99, type: 3}
+  m_Name: KnightTemplar
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: KnightTemplar
+  defaultSprite: {fileID: 1125982615641219489, guid: f377c6fc3702b8a4c880523f97c2dbdb,
+    type: 3}
+  maxHealth: 50
+  speed: 2
+  damage: 10
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  idleClip: {fileID: 7400000, guid: fb83f490a886f824facb7c40a5b8f2da, type: 2}
+  walkClip: {fileID: 7400000, guid: 70dfa2207fb20b2448d1d8eaa6d47cf7, type: 2}
+  hurtClip: {fileID: 7400000, guid: 2086d2248e7edfc4bb24bd3c119e2054, type: 2}
+  attackClip: {fileID: 7400000, guid: 1ad5d507e3b6c7745ab1d4dcfa006098, type: 2}
+  deathClip: {fileID: 7400000, guid: 2e680371a568dab449b7a3a21699434f, type: 2}

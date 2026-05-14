@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba74d9120e219647be53f7a61b1cb99, type: 3}
+  m_Name: ArmoredAxeman
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: ArmoredAxeman
+  defaultSprite: {fileID: 3997445265733366731, guid: c4b2f8c8d775e4f42b9cf8b15572517c,
+    type: 3}
+  maxHealth: 50
+  speed: 2
+  damage: 10
+  knockbackForce: 5
+  knockbackDuration: 0.3
+  idleClip: {fileID: 7400000, guid: e0daf6becfee9cd499d7364c803cc104, type: 2}
+  walkClip: {fileID: 7400000, guid: 082c30fd3bc6a0e4f9c7835554eba3f6, type: 2}
+  hurtClip: {fileID: 7400000, guid: 286c99a0eaab0dd4ca09ed1384758617, type: 2}
+  attackClip: {fileID: 7400000, guid: 4f19c2ddf05871f41abca06d6142aeae, type: 2}
+  deathClip: {fileID: 7400000, guid: 4303a9ec648c21d4e9c19031e04c90d5, type: 2}
