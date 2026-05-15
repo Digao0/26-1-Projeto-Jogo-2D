@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: Greatsword
   defaultSprite: {fileID: 7881636254453835088, guid: 9232e07d94ec2fd48b3fe6ac6b09c3b2,
     type: 3}
-  maxHealth: 50
-  speed: 2
-  damage: 10
-  knockbackForce: 5
+  maxHealth: 170
+  speed: 1.6
+  damage: 38
+  knockbackForce: 4
   knockbackDuration: 0.3
+  attackCooldown: 1.5
   idleClip: {fileID: 7400000, guid: fdf02a8a9d5f6e840a21b46b8a34e16d, type: 2}
   walkClip: {fileID: 7400000, guid: 6449afc435093c141a115a88156c2de1, type: 2}
   hurtClip: {fileID: 7400000, guid: d820b6a805e8842469688a7e3759b0cf, type: 2}

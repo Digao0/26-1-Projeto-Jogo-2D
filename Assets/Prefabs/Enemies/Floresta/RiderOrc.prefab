@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1540906026287273872}
   - component: {fileID: 2814422243923655980}
   - component: {fileID: 1678767736372693810}
+  - component: {fileID: 3971527044621381942}
   m_Layer: 0
   m_Name: RiderOrc
   m_TagString: Enemy
@@ -196,8 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996eb3199450aea44adc0e04783ede39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFollow
-  speed: 2
-  damage: 10
+  speed: 3.2
+  damage: 12
   attackCooldown: 1
 --- !u!114 &2814422243923655980
 MonoBehaviour:
@@ -212,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 50
-  knockbackForce: 5
+  knockbackForce: 4
   knockbackDuration: 0.3
   deathAnimDuration: 0.33333334
 --- !u!114 &1678767736372693810
@@ -227,3 +228,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7365b9bf62aaa47bf5396f725b1913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimator
+--- !u!114 &3971527044621381942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972140888218462559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::DashAbility
+  dashInterval: 6
+  dashSpeed: 7
+  dashDuration: 1

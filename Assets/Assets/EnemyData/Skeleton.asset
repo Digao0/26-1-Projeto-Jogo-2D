@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: Skeleton
   defaultSprite: {fileID: 303854554312539980, guid: 66abf144017de034eafe5744d7cac774,
     type: 3}
-  maxHealth: 50
-  speed: 2
-  damage: 10
-  knockbackForce: 5
+  maxHealth: 55
+  speed: 2.8
+  damage: 16
+  knockbackForce: 6
   knockbackDuration: 0.3
+  attackCooldown: 0.8
   idleClip: {fileID: 7400000, guid: 38e0c0c1459bde741817fe4da16ea260, type: 2}
   walkClip: {fileID: 7400000, guid: 05eb36b8ac78c9746b0d4139adeb7713, type: 2}
   hurtClip: {fileID: 7400000, guid: 832f84d5fba01244cb4580d9f768652b, type: 2}

@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: EliteOrc
   defaultSprite: {fileID: 2512407743645487233, guid: 7c6a1525cbf2a2949b98182c28a0bf57,
     type: 3}
-  maxHealth: 50
-  speed: 2
-  damage: 10
-  knockbackForce: 5
+  maxHealth: 160
+  speed: 2.2
+  damage: 20
+  knockbackForce: 3
   knockbackDuration: 0.3
+  attackCooldown: 0.85
   idleClip: {fileID: 7400000, guid: dfe428e9a4549bc4cbe56a462e54cdc6, type: 2}
   walkClip: {fileID: 7400000, guid: eb33f89e8c0e67247910340928b8391b, type: 2}
   hurtClip: {fileID: 7400000, guid: 30ccfa62cf57e0044be649ee6afab5f7, type: 2}

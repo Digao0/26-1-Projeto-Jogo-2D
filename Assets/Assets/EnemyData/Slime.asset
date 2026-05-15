@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: Slime
   defaultSprite: {fileID: 7433934793083656646, guid: dcbfc64f37a501847b4ab17a184327cf,
     type: 3}
-  maxHealth: 50
-  speed: 2
-  damage: 10
-  knockbackForce: 5
+  maxHealth: 30
+  speed: 1.5
+  damage: 8
+  knockbackForce: 7
   knockbackDuration: 0.3
+  attackCooldown: 1.2
   idleClip: {fileID: 7400000, guid: 7c224e8d60e0c9f44adf2ee064089795, type: 2}
   walkClip: {fileID: 7400000, guid: 1d37f7440a01e8442ba6d3bc5bc9b904, type: 2}
   hurtClip: {fileID: 7400000, guid: 574ada21161ed4d4e9e28a9e03c985a2, type: 2}

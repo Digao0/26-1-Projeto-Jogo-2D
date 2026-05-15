@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: Archer
   defaultSprite: {fileID: 9041428293049349298, guid: fb7ac8b593f008f4d8bd1891fe48b1ba,
     type: 3}
-  maxHealth: 50
+  maxHealth: 60
   speed: 2
-  damage: 10
-  knockbackForce: 5
+  damage: 20
+  knockbackForce: 6
   knockbackDuration: 0.3
+  attackCooldown: 2
   idleClip: {fileID: 7400000, guid: 76a8aad346e598244bc50b97e7d11a45, type: 2}
   walkClip: {fileID: 7400000, guid: ed2a77b959648a1478ff1d5a4842a041, type: 2}
   hurtClip: {fileID: 7400000, guid: 62635d6e1bac5b9468c9cd08100ecd18, type: 2}

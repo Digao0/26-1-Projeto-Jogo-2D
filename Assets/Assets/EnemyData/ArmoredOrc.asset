@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: ArmoredOrc
   defaultSprite: {fileID: -4391229105808040339, guid: cc2ac7dbfabb2d1489a64040bf9a0589,
     type: 3}
-  maxHealth: 50
-  speed: 2
-  damage: 10
-  knockbackForce: 5
-  knockbackDuration: 0.3
+  maxHealth: 110
+  speed: 1.5
+  damage: 16
+  knockbackForce: 2
+  knockbackDuration: 0.2
+  attackCooldown: 0.9
   idleClip: {fileID: 7400000, guid: 236f4e789d04a024ba711ebec4aa294c, type: 2}
   walkClip: {fileID: 7400000, guid: 36d332644e231b74eb60b077c4abec83, type: 2}
   hurtClip: {fileID: 7400000, guid: 3828ee009c938a544b44ef2434496282, type: 2}

@@ -14,6 +14,7 @@ public class EnemyData : ScriptableObject
     public int damage = 10;
     public float knockbackForce = 5f;
     public float knockbackDuration = 0.3f;
+    public float attackCooldown = 1f;
 
     [Header("Animations")]
     public AnimationClip idleClip;

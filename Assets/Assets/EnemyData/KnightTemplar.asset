@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: KnightTemplar
   defaultSprite: {fileID: 1125982615641219489, guid: f377c6fc3702b8a4c880523f97c2dbdb,
     type: 3}
-  maxHealth: 50
-  speed: 2
-  damage: 10
-  knockbackForce: 5
-  knockbackDuration: 0.3
+  maxHealth: 220
+  speed: 1.8
+  damage: 22
+  knockbackForce: 1.5
+  knockbackDuration: 0.15
+  attackCooldown: 0.8
   idleClip: {fileID: 7400000, guid: fb83f490a886f824facb7c40a5b8f2da, type: 2}
   walkClip: {fileID: 7400000, guid: 70dfa2207fb20b2448d1d8eaa6d47cf7, type: 2}
   hurtClip: {fileID: 7400000, guid: 2086d2248e7edfc4bb24bd3c119e2054, type: 2}

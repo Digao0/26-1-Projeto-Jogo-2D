@@ -16,10 +16,11 @@ MonoBehaviour:
   defaultSprite: {fileID: 4762972965759509545, guid: 8e6e08f55c29fff4da3e595d346a24df,
     type: 3}
   maxHealth: 50
-  speed: 2
-  damage: 10
-  knockbackForce: 5
+  speed: 3.2
+  damage: 12
+  knockbackForce: 4
   knockbackDuration: 0.3
+  attackCooldown: 1
   idleClip: {fileID: 7400000, guid: d9c0605a9d2d5d346ab6452f0d3112bb, type: 2}
   walkClip: {fileID: 7400000, guid: 1bdbeea11d9c1fc4a86b22413f89c25c, type: 2}
   hurtClip: {fileID: 7400000, guid: 94257ef73b296ec4598b48503875b89b, type: 2}
