@@ -10621,11 +10621,11 @@ MonoBehaviour:
     rider: 0
     armored: 0
     elite: 0
-    armoredAxeman: 1
-    lancer: 1
-    knightTemplar: 1
+    armoredAxeman: 0
+    lancer: 2
+    knightTemplar: 0
     werewolf: 0
-    soldier: 0
+    soldier: 3
     skeleton: 0
     armoredSkeleton: 0
     werebear: 0
@@ -10637,10 +10637,40 @@ MonoBehaviour:
     armored: 0
     elite: 0
     armoredAxeman: 0
-    lancer: 0
+    lancer: 2
     knightTemplar: 0
     werewolf: 1
-    soldier: 1
+    soldier: 2
+    skeleton: 0
+    armoredSkeleton: 0
+    werebear: 0
+    greatswordSkeleton: 0
+    skeletonArcher: 0
+  - slime: 0
+    orc: 0
+    rider: 0
+    armored: 0
+    elite: 0
+    armoredAxeman: 2
+    lancer: 1
+    knightTemplar: 0
+    werewolf: 0
+    soldier: 2
+    skeleton: 0
+    armoredSkeleton: 0
+    werebear: 0
+    greatswordSkeleton: 0
+    skeletonArcher: 0
+  - slime: 0
+    orc: 0
+    rider: 0
+    armored: 0
+    elite: 0
+    armoredAxeman: 2
+    lancer: 2
+    knightTemplar: 1
+    werewolf: 1
+    soldier: 2
     skeleton: 0
     armoredSkeleton: 0
     werebear: 0
@@ -156639,7 +156669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextSceneTrigger
   sceneName: CaveScene
-  waveManager: {fileID: 0}
+  waveManager: {fileID: 546345048}
 --- !u!61 &2131252212
 BoxCollider2D:
   m_ObjectHideFlags: 0

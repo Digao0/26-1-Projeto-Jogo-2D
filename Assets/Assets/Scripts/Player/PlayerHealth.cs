@@ -77,6 +77,9 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Player morreu");
 
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<PlayerAttack>().enabled = false;
+
         // trava movimento
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;

@@ -56,6 +56,28 @@ Jogo 2D top-down de wave defense desenvolvido em Unity 6. O jogador percorre 3 f
 
 ---
 
+## Waves por fase
+
+### Floresta (SampleScene)
+
+| Wave | Slime | Orc | RiderOrc | ArmoredOrc | EliteOrc | Total |
+|---|---|---|---|---|---|---|
+| 1 | 4 | 2 | — | — | — | 6 |
+| 2 | 2 | 2 | 1 | — | — | 5 |
+| 3 | — | 2 | 1 | 2 | — | 5 |
+| 4 | — | 2 | 2 | 2 | 1 | 7 |
+
+### Castelo (CastleScene)
+
+| Wave | Soldier | Lancer | ArmoredAxeman | Werewolf | KnightTemplar | Total |
+|---|---|---|---|---|---|---|
+| 1 | 3 | 2 | — | — | — | 5 |
+| 2 | 2 | 2 | — | 1 | — | 5 |
+| 3 | 2 | 1 | 2 | — | — | 5 |
+| 4 | 2 | 2 | 2 | 1 | 1 | 8 |
+
+---
+
 ## Power-ups
 
 | Item | Efeito |

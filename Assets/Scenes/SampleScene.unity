@@ -34937,24 +34937,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
   enemySpawner: {fileID: 507653326}
   waves:
-  - slime: 1
-    orc: 1
+  - slime: 4
+    orc: 2
     rider: 0
     armored: 0
     elite: 0
     soldier: 0
     skeleton: 0
-  - slime: 0
-    orc: 0
+  - slime: 2
+    orc: 2
     rider: 1
-    armored: 1
+    armored: 0
     elite: 0
     soldier: 0
     skeleton: 0
   - slime: 0
-    orc: 0
-    rider: 0
-    armored: 0
+    orc: 2
+    rider: 1
+    armored: 2
+    elite: 0
+    soldier: 0
+    skeleton: 0
+  - slime: 0
+    orc: 2
+    rider: 2
+    armored: 2
     elite: 1
     soldier: 0
     skeleton: 0
