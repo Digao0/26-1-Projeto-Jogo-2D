@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
         if (isInvulnerable || currentHealth <= 0) return;
         isKnockedBack = true;
 
+        DamageNumber.Spawn(transform.position, damage, Color.red, transform);
         currentHealth -= damage;
 
         GetComponent<PlayerAttack>().ResetAttack();
@@ -116,6 +117,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isInvulnerable || currentHealth <= 0) return;
 
+        DamageNumber.Spawn(transform.position, damage, Color.red, transform);
         currentHealth -= damage;
         anim.SetTrigger("Hit");
 

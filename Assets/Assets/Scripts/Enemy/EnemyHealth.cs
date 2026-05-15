@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage, Transform attacker)
     {
+        DamageNumber.Spawn(transform.position, damage, Color.white);
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
