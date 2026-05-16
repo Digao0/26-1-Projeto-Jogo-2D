@@ -12,9 +12,12 @@ public class DamageNumber : MonoBehaviour
 
         TextMeshPro tmp = go.AddComponent<TextMeshPro>();
         tmp.text = "-" + damage;
-        tmp.fontSize = 4f;
+        tmp.fontSize = 5f;
+        tmp.fontStyle = FontStyles.Bold;
         tmp.color = color;
         tmp.alignment = TextAlignmentOptions.Center;
+        tmp.outlineWidth = 0.2f;
+        tmp.outlineColor = Color.black;
         tmp.sortingLayerID = SortingLayer.NameToID("Light");
         tmp.sortingOrder = 50;
 

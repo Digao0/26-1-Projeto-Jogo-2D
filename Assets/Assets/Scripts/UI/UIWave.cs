@@ -7,7 +7,17 @@ public class UIWave : MonoBehaviour
     public TextMeshProUGUI waveText;
     public GameObject progressBar;
 
+    void Start()
+    {
+        UpdateText();
+    }
+
     void Update()
+    {
+        UpdateText();
+    }
+
+    void UpdateText()
     {
         if (waveManager.isFinished)
         {
