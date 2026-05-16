@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996eb3199450aea44adc0e04783ede39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFollow
+  data: {fileID: 11400000, guid: bdaf3e4d70b82424784850cd8d80a5c5, type: 2}
   speed: 3.2
   damage: 12
   attackCooldown: 1
@@ -212,10 +213,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e75bc751695bb2439a5769016a76789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  data: {fileID: 11400000, guid: bdaf3e4d70b82424784850cd8d80a5c5, type: 2}
   maxHealth: 50
   knockbackForce: 4
   knockbackDuration: 0.3
   deathAnimDuration: 0.33333334
+  dropPrefab: {fileID: 0}
 --- !u!114 &1678767736372693810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +241,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DashAbility
   dashInterval: 6
   dashSpeed: 7

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
+    public EnemyData data;
+
     public float speed = 2f;
     public int damage = 10;
     public float attackCooldown = 1f;
@@ -17,6 +19,13 @@ public class EnemyFollow : MonoBehaviour
 
     void Start()
     {
+        if (data != null)
+        {
+            speed = data.speed;
+            damage = data.damage;
+            attackCooldown = data.attackCooldown;
+        }
+
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         rb = GetComponent<Rigidbody2D>();
         enemyAnimator = GetComponent<EnemyAnimator>();

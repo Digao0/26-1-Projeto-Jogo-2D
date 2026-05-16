@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public EnemyData data;
+
     public int maxHealth = 50;
     public float knockbackForce = 5f;
     public float knockbackDuration = 0.3f;
@@ -15,6 +17,14 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
+        if (data != null)
+        {
+            maxHealth = data.maxHealth;
+            knockbackForce = data.knockbackForce;
+            knockbackDuration = data.knockbackDuration;
+            deathAnimDuration = data.deathAnimDuration;
+        }
+
         currentHealth = maxHealth;
         enemyFollow = GetComponent<EnemyFollow>();
         rb = GetComponent<Rigidbody2D>();

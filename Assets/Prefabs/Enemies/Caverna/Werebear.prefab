@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996eb3199450aea44adc0e04783ede39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFollow
+  data: {fileID: 11400000, guid: 273f3e619fdcf684596b1a8fe2acd218, type: 2}
   speed: 1.8
   damage: 30
   attackCooldown: 0.7
@@ -211,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e75bc751695bb2439a5769016a76789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  data: {fileID: 11400000, guid: 273f3e619fdcf684596b1a8fe2acd218, type: 2}
   maxHealth: 270
   knockbackForce: 1.5
   knockbackDuration: 0.15
