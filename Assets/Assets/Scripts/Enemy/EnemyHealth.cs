@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
     private EnemyFollow enemyFollow;
     private Rigidbody2D rb;
     private EnemyAnimator enemyAnimator;
+    private Coroutine burnCoroutine;
 
     void Start()
     {
@@ -56,6 +58,34 @@ public class EnemyHealth : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         enemyFollow.enabled = true;
+    }
+
+    public void ApplyBurn(int dps, float duration)
+    {
+        if (burnCoroutine != null) StopCoroutine(burnCoroutine);
+        burnCoroutine = StartCoroutine(BurnRoutine(dps, duration));
+    }
+
+    IEnumerator BurnRoutine(int dps, float duration)
+    {
+        SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
+        Color[] originalColors = System.Array.ConvertAll(srs, s => s.color);
+        foreach (var s in srs) s.color = new Color(1f, 0.45f, 0.1f);
+
+        float elapsed = 0f;
+        while (elapsed < duration && currentHealth > 0)
+        {
+            yield return new WaitForSeconds(0.5f);
+            elapsed += 0.5f;
+            if (currentHealth <= 0) break;
+            DamageNumber.Spawn(transform.position, dps, new Color(1f, 0.4f, 0f));
+            currentHealth -= dps;
+            if (currentHealth <= 0) { Die(); yield break; }
+        }
+
+        for (int i = 0; i < srs.Length; i++)
+            if (srs[i] != null) srs[i].color = originalColors[i];
+        burnCoroutine = null;
     }
 
     void Die()

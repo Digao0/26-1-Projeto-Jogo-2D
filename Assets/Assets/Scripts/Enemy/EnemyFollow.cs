@@ -19,6 +19,9 @@ public class EnemyFollow : MonoBehaviour
     private bool isAttacking;
     private float nextAttackTime;
 
+    private float baseSpeed;
+    private Coroutine slowCoroutine;
+
     // Detecção de travamento por posição real
     private Vector2 lastCheckedPosition;
     private float positionCheckTimer;
@@ -46,11 +49,30 @@ public class EnemyFollow : MonoBehaviour
         enemyAnimator = GetComponent<EnemyAnimator>();
         sr            = GetComponentInChildren<SpriteRenderer>();
         lastCheckedPosition = rb.position;
+        baseSpeed = speed;
     }
 
     void OnEnable()
     {
         isAttacking = false;
+    }
+
+    public void ApplySlow(float speedMultiplier, float duration)
+    {
+        if (slowCoroutine != null) StopCoroutine(slowCoroutine);
+        slowCoroutine = StartCoroutine(SlowRoutine(speedMultiplier, duration));
+    }
+
+    IEnumerator SlowRoutine(float speedMultiplier, float duration)
+    {
+        speed = baseSpeed * speedMultiplier;
+        if (sr != null) sr.color = new Color(0.5f, 0.8f, 1f);
+
+        yield return new WaitForSeconds(duration);
+
+        speed = baseSpeed;
+        if (sr != null) sr.color = Color.white;
+        slowCoroutine = null;
     }
 
     void FixedUpdate()

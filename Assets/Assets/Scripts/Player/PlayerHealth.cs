@@ -20,6 +20,15 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+        if (PlayerSwordManager.Instance != null
+            && PlayerSwordManager.Instance.equippedSword == SwordType.Life
+            && !PlayerSwordManager.Instance.lifeSwordBonusApplied)
+        {
+            maxHealth += 50;
+            currentHealth = maxHealth;
+            PlayerSwordManager.Instance.lifeSwordBonusApplied = true;
+        }
     }
 
     public void TakeDamage(int damage, Transform enemy)
