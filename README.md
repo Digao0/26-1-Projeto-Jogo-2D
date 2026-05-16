@@ -76,6 +76,15 @@ Jogo 2D top-down de wave defense desenvolvido em Unity 6. O jogador percorre 3 f
 | 3 | 2 | 1 | 2 | — | — | 5 |
 | 4 | 2 | 2 | 2 | 1 | 1 | 8 |
 
+### Caverna (CaveScene)
+
+| Wave | Skeleton | Archer | ArmoredSkeleton | Greatsword | Werebear | Total |
+|---|---|---|---|---|---|---|
+| 1 | 3 | 2 | — | — | — | 5 |
+| 2 | 2 | 2 | 2 | — | — | 6 |
+| 3 | 2 | 1 | 2 | 1 | — | 6 |
+| 4 | 2 | 2 | 2 | 1 | 1 | 8 |
+
 ---
 
 ## Power-ups

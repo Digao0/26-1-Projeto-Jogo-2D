@@ -199,6 +199,9 @@ MonoBehaviour:
   speed: 2.8
   damage: 16
   attackCooldown: 0.8
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 4
 --- !u!114 &6538324244821077808
 MonoBehaviour:
   m_ObjectHideFlags: 0

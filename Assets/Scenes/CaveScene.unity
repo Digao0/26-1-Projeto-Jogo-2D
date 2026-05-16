@@ -62562,11 +62562,11 @@ MonoBehaviour:
     knightTemplar: 0
     werewolf: 0
     soldier: 0
-    skeleton: 1
-    armoredSkeleton: 1
-    werebear: 1
+    skeleton: 3
+    armoredSkeleton: 0
+    werebear: 0
     greatswordSkeleton: 0
-    skeletonArcher: 0
+    skeletonArcher: 2
   - slime: 0
     orc: 0
     rider: 0
@@ -62577,11 +62577,41 @@ MonoBehaviour:
     knightTemplar: 0
     werewolf: 0
     soldier: 0
-    skeleton: 0
-    armoredSkeleton: 0
+    skeleton: 2
+    armoredSkeleton: 2
+    werebear: 0
+    greatswordSkeleton: 0
+    skeletonArcher: 2
+  - slime: 0
+    orc: 0
+    rider: 0
+    armored: 0
+    elite: 0
+    armoredAxeman: 0
+    lancer: 0
+    knightTemplar: 0
+    werewolf: 0
+    soldier: 0
+    skeleton: 2
+    armoredSkeleton: 2
     werebear: 0
     greatswordSkeleton: 1
     skeletonArcher: 1
+  - slime: 0
+    orc: 0
+    rider: 0
+    armored: 0
+    elite: 0
+    armoredAxeman: 0
+    lancer: 0
+    knightTemplar: 0
+    werewolf: 0
+    soldier: 0
+    skeleton: 2
+    armoredSkeleton: 2
+    werebear: 1
+    greatswordSkeleton: 1
+    skeletonArcher: 2
   waveNumber: 1
   timeBetweenWaves: 3
   isFinished: 0
