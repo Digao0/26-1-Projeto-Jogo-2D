@@ -212,7 +212,8 @@ public class ItemSelectionUI : MonoBehaviour
         go.transform.SetParent(parent, false);
         var t = go.AddComponent<Text>();
         t.text               = content;
-        t.font               = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        t.font               = Resources.Load<Font>("Fonts/MedievalSharp-Regular")
+                             ?? Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         t.fontSize           = size;
         t.fontStyle          = style;
         t.alignment          = TextAnchor.MiddleCenter;

@@ -11,6 +11,8 @@ public class DamageNumber : MonoBehaviour
         go.transform.position = position + Vector3.up * 0.3f;
 
         TextMeshPro tmp = go.AddComponent<TextMeshPro>();
+        var font = Resources.Load<TMP_FontAsset>("Fonts/MedievalSharp-Regular SDF");
+        if (font != null) tmp.font = font;
         tmp.text = "-" + damage;
         tmp.fontSize = 5f;
         tmp.fontStyle = FontStyles.Bold;

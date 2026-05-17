@@ -70,7 +70,8 @@ public class PlayerSwordManager : MonoBehaviour
         textGo.transform.SetParent(bg.transform, false);
         var t = textGo.AddComponent<Text>();
         t.text               = GetSwordDisplayName();
-        t.font               = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        t.font               = Resources.Load<Font>("Fonts/MedievalSharp-Regular")
+                             ?? Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         t.fontSize           = 21;
         t.fontStyle          = FontStyle.BoldAndItalic;
         t.alignment          = TextAnchor.MiddleLeft;

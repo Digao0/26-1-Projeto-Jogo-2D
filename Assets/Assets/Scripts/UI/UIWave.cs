@@ -9,6 +9,8 @@ public class UIWave : MonoBehaviour
 
     void Start()
     {
+        var font = Resources.Load<TMP_FontAsset>("Fonts/MedievalSharp-Regular SDF");
+        if (font != null) waveText.font = font;
         UpdateText();
     }
 
