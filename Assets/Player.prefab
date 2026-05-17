@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 7211456289790679338}
   - component: {fileID: 1665382768669816518}
   - component: {fileID: 932256658636711832}
+  - component: {fileID: 3847291560138472019}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -620,6 +621,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c1ec1d090ada0f418eb0b41b32ec52a, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::AttackHitbox
   damage: 20
+--- !u!114 &3847291560138472019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2482351974130085675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f607182930a4b5c6d7e8f900112233, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFireSpriteSwapper
