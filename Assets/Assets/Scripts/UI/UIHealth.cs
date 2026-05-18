@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIHealth : MonoBehaviour
 {
@@ -8,17 +7,28 @@ public class UIHealth : MonoBehaviour
     public RectTransform healthBarBackground;
 
     private float maxWidth;
+    private PlayerStats stats;
 
     void Start()
     {
         maxWidth = healthBarBackground.rect.width;
+
+        // 🔥 pega os stats do player
+        stats = player.GetComponent<PlayerStats>();
     }
 
     void Update()
     {
-        float targetPercent = (float)player.GetCurrentHealth() / player.maxHealth;
+        if (player == null || stats == null) return;
+
+        float currentHealth = player.GetCurrentHealth();
+        float maxHealth = stats.maxHealth;
+
+        float targetPercent = currentHealth / maxHealth;
+
         float currentWidth = healthBarFill.sizeDelta.x;
         float newWidth = Mathf.Lerp(currentWidth, targetPercent * maxWidth, Time.unscaledDeltaTime * 8f);
+
         healthBarFill.sizeDelta = new Vector2(newWidth, healthBarFill.sizeDelta.y);
     }
 }

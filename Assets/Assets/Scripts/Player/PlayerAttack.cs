@@ -7,9 +7,12 @@ public class PlayerAttack : MonoBehaviour
     public GameObject attackDown;
     public GameObject attackLeft;
     public GameObject attackRight;
+
     private Animator anim;
+    private SpriteRenderer sr;
+    private PlayerStats stats;
+
     private bool canAttack = true;
-    SpriteRenderer sr;
     public bool isAttacking = false;
 
     private string lastDirection = "Down";
@@ -19,6 +22,90 @@ public class PlayerAttack : MonoBehaviour
     public AudioClip boostMusic;
     private Coroutine boostCoroutine;
 
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+        stats = GetComponent<PlayerStats>();
+    }
+
+    void Update()
+    {
+        if (!canAttack) return;
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            lastDirection = "Up";
+            AttackTrigger();
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            lastDirection = "Down";
+            AttackTrigger();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            lastDirection = "Left";
+            AttackTrigger();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            lastDirection = "Right";
+            AttackTrigger();
+        }
+    }
+
+    public void ActivateHitbox()
+    {
+        CancelInvoke(nameof(DisableAll));
+        DisableAll();
+
+        if (lastDirection == "Up") attackUp.SetActive(true);
+        if (lastDirection == "Down") attackDown.SetActive(true);
+        if (lastDirection == "Left") attackLeft.SetActive(true);
+        if (lastDirection == "Right") attackRight.SetActive(true);
+
+        Invoke(nameof(DisableAll), 0.1f);
+    }
+
+    void DisableAll()
+    {
+        attackUp.SetActive(false);
+        attackDown.SetActive(false);
+        attackLeft.SetActive(false);
+        attackRight.SetActive(false);
+    }
+
+    void AttackTrigger()
+    {
+        canAttack = false;
+        isAttacking = true;
+
+        if (lastDirection == "Left")  { sr.flipX = true; transform.rotation = Quaternion.identity; }
+        if (lastDirection == "Right") { sr.flipX = false; transform.rotation = Quaternion.identity; }
+        if (lastDirection == "Up")    { sr.flipX = false; transform.rotation = Quaternion.Euler(0, 0, 90); }
+        if (lastDirection == "Down")  { sr.flipX = false; transform.rotation = Quaternion.Euler(0, 0, -90); }
+
+        anim.SetTrigger("Attack");
+    }
+
+    public void ResetAttack()
+    {
+        canAttack = true;
+        isAttacking = false;
+        transform.rotation = Quaternion.identity;
+    }
+
+    // 🔥 DANO REAL baseado no PlayerStats
+    public float GetDamage()
+    {
+        return stats.damage * damageMultiplier;
+    }
+
+    // ===== BOOST =====
     public void ActivateDamageBoost(float duration)
     {
         if (boostCoroutine != null) StopCoroutine(boostCoroutine);
@@ -45,80 +132,5 @@ public class PlayerAttack : MonoBehaviour
         damageMultiplier = 1f;
         boostCoroutine = null;
         if (audioObj != null) Destroy(audioObj);
-    }
-
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
-    }
-    void Update()
-    {
-        if (!canAttack) return;
-        
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            lastDirection = "Up";
-            AttackTrigger();
-        }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            lastDirection = "Down";
-            AttackTrigger();
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            lastDirection = "Left";
-            AttackTrigger();
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            lastDirection = "Right";
-            AttackTrigger();
-        }
-    }
-
-    void DisableAll()
-    {
-        attackUp.SetActive(false);
-        attackDown.SetActive(false);
-        attackLeft.SetActive(false);
-        attackRight.SetActive(false);
-    }
-    
-    public void ActivateHitbox()
-    {
-        CancelInvoke(nameof(DisableAll));
-        DisableAll();
-
-        if (lastDirection == "Up") attackUp.SetActive(true);
-        if (lastDirection == "Down") attackDown.SetActive(true);
-        if (lastDirection == "Left") attackLeft.SetActive(true);
-        if (lastDirection == "Right") attackRight.SetActive(true);
-
-        Invoke(nameof(DisableAll), 0.1f);
-    }
-    
-    void AttackTrigger()
-    {
-        canAttack = false;
-        isAttacking = true;
-
-        if (lastDirection == "Left")  { sr.flipX = true;  transform.rotation = Quaternion.identity; }
-        if (lastDirection == "Right") { sr.flipX = false; transform.rotation = Quaternion.identity; }
-        if (lastDirection == "Up")    { sr.flipX = false; transform.rotation = Quaternion.Euler(0, 0, 90); }
-        if (lastDirection == "Down")  { sr.flipX = false; transform.rotation = Quaternion.Euler(0, 0, -90); }
-
-        anim.SetTrigger("Attack");
-    }
-
-    public void ResetAttack()
-    {
-        canAttack = true;
-        isAttacking = false;
-        transform.rotation = Quaternion.identity;
     }
 }

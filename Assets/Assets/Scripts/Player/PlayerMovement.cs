@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
-
     private Rigidbody2D rb;
     private Vector2 movement;
     private Animator anim;
     private SpriteRenderer sr;
+
     PlayerHealth health;
     PlayerAttack playerAttack;
+    PlayerStats stats;
 
     private float speedMultiplier = 1f;
 
@@ -20,12 +20,12 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         playerAttack = GetComponent<PlayerAttack>();
+        stats = GetComponent<PlayerStats>();
     }
 
     void Update()
     {
-        movement.x = 0;
-        movement.y = 0;
+        movement = Vector2.zero;
 
         if (Input.GetKey(KeyCode.A)) movement.x = -1;
         if (Input.GetKey(KeyCode.D)) movement.x = 1;
@@ -46,7 +46,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (health.isKnockedBack) return;
-        rb.linearVelocity = movement.normalized * speed * speedMultiplier;
+
+        rb.linearVelocity = movement.normalized * stats.speed * speedMultiplier;
     }
 
     public void AplicarLentidao(float fator, float duracao)

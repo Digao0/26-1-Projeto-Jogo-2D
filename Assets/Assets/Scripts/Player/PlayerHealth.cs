@@ -3,58 +3,45 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
     public float knockbackForce = 5f;
     public float invulnerabilityTime = 0.5f;
     public float knockbackDuration = 0.2f;
+
     public bool isKnockedBack = false;
 
     private int currentHealth;
+
     private Animator anim;
     private Rigidbody2D rb;
+    private PlayerStats stats;
 
     private bool isInvulnerable = false;
 
     void Start()
     {
-        currentHealth = maxHealth;
+        stats = GetComponent<PlayerStats>();
+        currentHealth = (int)stats.maxHealth;
+
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-
-        if (PlayerSwordManager.Instance != null
-            && PlayerSwordManager.Instance.equippedSword == SwordType.Life
-            && !PlayerSwordManager.Instance.lifeSwordBonusApplied)
-        {
-            maxHealth += 50;
-            currentHealth = maxHealth;
-            PlayerSwordManager.Instance.lifeSwordBonusApplied = true;
-        }
     }
 
     public void TakeDamage(int damage, Transform enemy)
     {
         if (isInvulnerable || currentHealth <= 0) return;
+
         isKnockedBack = true;
 
-        DamageNumber.Spawn(transform.position, damage, Color.red, transform);
         currentHealth = Mathf.Max(0, currentHealth - damage);
 
-        GetComponent<PlayerAttack>().ResetAttack();
-
-        // animação de dano
         anim.SetTrigger("Hit");
 
-        // direção do knockback
         Vector2 direction = (transform.position - enemy.position).normalized;
-
-        // aplica knockback
         rb.linearVelocity = direction * knockbackForce;
 
-        // para o knockback depois de um tempo
         CancelInvoke(nameof(StopKnockback));
         Invoke(nameof(StopKnockback), knockbackDuration);
 
-        // ativa invulnerabilidade
         isInvulnerable = true;
         Invoke(nameof(ResetInvulnerability), invulnerabilityTime);
 
@@ -70,13 +57,6 @@ public class PlayerHealth : MonoBehaviour
         isKnockedBack = false;
     }
 
-    public void GrantInvulnerability(float duration)
-    {
-        isInvulnerable = true;
-        CancelInvoke(nameof(ResetInvulnerability));
-        Invoke(nameof(ResetInvulnerability), duration);
-    }
-
     void ResetInvulnerability()
     {
         isInvulnerable = false;
@@ -89,20 +69,29 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<PlayerMovement>().enabled = false;
         GetComponent<PlayerAttack>().enabled = false;
 
-        // trava movimento
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
 
-        // animação de morte
         anim.SetTrigger("Die");
 
-        // 🔥 pausa o jogo imediatamente
         Time.timeScale = 0f;
 
-        // espera animação terminar usando tempo real
         StartCoroutine(GameOverDelay());
     }
-    
+
+    IEnumerator GameOverDelay()
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        CallGameOver();
+    }
+
+    void CallGameOver()
+    {
+        GameManager gm = FindObjectOfType<GameManager>();
+        if (gm != null)
+            gm.GameOver();
+    }
+
     public int GetCurrentHealth()
     {
         return currentHealth;
@@ -110,27 +99,15 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(int amount)
     {
-        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        currentHealth = Mathf.Min(currentHealth + amount, (int)stats.maxHealth);
     }
     
-    void CallGameOver()
-    {
-        GameManager gm = FindObjectOfType<GameManager>();
-        if (gm != null)
-            gm.GameOver();
-    }
-    
-    IEnumerator GameOverDelay()
-    {
-        yield return new WaitForSecondsRealtime(1.0f);
-        CallGameOver();
-    }
     public void TakeDamageNoKnockback(int damage)
     {
         if (isInvulnerable || currentHealth <= 0) return;
 
-        DamageNumber.Spawn(transform.position, damage, Color.red, transform);
         currentHealth = Mathf.Max(0, currentHealth - damage);
+
         anim.SetTrigger("Hit");
 
         isInvulnerable = true;
@@ -139,5 +116,4 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
             Die();
     }
-    
 }

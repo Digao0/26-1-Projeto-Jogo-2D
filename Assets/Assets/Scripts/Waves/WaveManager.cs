@@ -28,6 +28,7 @@ public class Wave
 
 public class WaveManager : MonoBehaviour
 {
+    public UIUpgrade uiUpgrade;
     public EnemySpawner enemySpawner;
     public Wave[] waves;
 
@@ -51,7 +52,7 @@ public class WaveManager : MonoBehaviour
         StartWave();
     }
 
-    void StartWave()
+    public void StartWave()
     {
         if (waveNumber - 1 >= waves.Length)
         {
@@ -115,19 +116,21 @@ public class WaveManager : MonoBehaviour
     IEnumerator NextWave()
     {
         isChangingWave = true;
-        nextWaveProgress = 0f;
 
         float timer = 0f;
 
         while (timer < timeBetweenWaves)
         {
             timer += Time.deltaTime;
-            nextWaveProgress = Mathf.Clamp01(timer / timeBetweenWaves);
             yield return null;
         }
 
         waveNumber++;
-        StartWave();
+
+        Debug.Log("Chamando upgrade");
+
+        uiUpgrade.Show(); // 🔥 ESSENCIAL
+
         isChangingWave = false;
     }
 

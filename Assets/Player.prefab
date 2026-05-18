@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1862768973450446115
 Transform:
   m_ObjectHideFlags: 0
@@ -256,7 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c2e446f79935440bb60f590909a7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 7
 --- !u!60 &7211456289790679338
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -324,7 +323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07167e8c231cfcf4c9066707303493ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 200
   knockbackForce: 10
   invulnerabilityTime: 0.5
   knockbackDuration: 0.5
@@ -348,6 +346,18 @@ MonoBehaviour:
   isAttacking: 0
   damageMultiplier: 1
   boostMusic: {fileID: 0}
+--- !u!114 &3847291560138472019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2482351974130085675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f607182930a4b5c6d7e8f900112233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFireSpriteSwapper
 --- !u!1 &5971174830144255495
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1195099312048163727
 Transform:
   m_ObjectHideFlags: 0
@@ -457,7 +467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2851323500797586420
 Transform:
   m_ObjectHideFlags: 0
@@ -549,7 +559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6975792552729912615
 Transform:
   m_ObjectHideFlags: 0
@@ -621,18 +631,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c1ec1d090ada0f418eb0b41b32ec52a, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackHitbox
   damage: 20
---- !u!114 &3847291560138472019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2482351974130085675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f607182930a4b5c6d7e8f900112233, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerFireSpriteSwapper
