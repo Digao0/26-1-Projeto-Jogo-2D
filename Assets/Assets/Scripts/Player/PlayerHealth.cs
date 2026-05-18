@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public float knockbackDuration = 0.2f;
 
     public bool isKnockedBack = false;
+    public AudioClip hurtSound;
 
     private int currentHealth;
 
@@ -32,8 +33,13 @@ public class PlayerHealth : MonoBehaviour
 
         isKnockedBack = true;
 
+        if (hurtSound != null)
+            AudioSource.PlayClipAtPoint(hurtSound, transform.position);
+
+        DamageNumber.Spawn(transform.position, damage, Color.red, transform);
         currentHealth = Mathf.Max(0, currentHealth - damage);
 
+        GetComponent<PlayerAttack>().ResetAttack();
         anim.SetTrigger("Hit");
 
         Vector2 direction = (transform.position - enemy.position).normalized;
@@ -106,6 +112,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isInvulnerable || currentHealth <= 0) return;
 
+        if (hurtSound != null)
+            AudioSource.PlayClipAtPoint(hurtSound, transform.position);
+
+        DamageNumber.Spawn(transform.position, damage, Color.red, transform);
         currentHealth = Mathf.Max(0, currentHealth - damage);
 
         anim.SetTrigger("Hit");
