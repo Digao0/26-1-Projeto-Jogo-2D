@@ -35176,8 +35176,8 @@ MonoBehaviour:
   greatswordSkeletonPrefab: {fileID: 0}
   skeletonArcherPrefab: {fileID: 0}
   SkeletonPrefab: {fileID: 0}
-  spawnRangeX: 10
-  spawnRangeY: 5
+  spawnMinDistance: 6
+  spawnMaxDistance: 10
 --- !u!4 &507653327
 Transform:
   m_ObjectHideFlags: 0
@@ -37339,7 +37339,7 @@ Transform:
   m_GameObject: {fileID: 1242907777}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.23, y: 32.81, z: 0}
+  m_LocalPosition: {x: 9, y: -43.8, z: 0}
   m_LocalScale: {x: 9.201602, y: 6.945401, z: 4.7116914}
   m_ConstrainProportionsScale: 0
   m_Children: []
