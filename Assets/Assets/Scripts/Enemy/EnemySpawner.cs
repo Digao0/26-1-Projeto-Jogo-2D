@@ -28,6 +28,9 @@ public class EnemySpawner : MonoBehaviour
     public float spawnMinDistance = 6f;
     public float spawnMaxDistance = 10f;
 
+    [Header("Pontos fixos de spawn (opcional - ignora distância se preenchido)")]
+    public Transform[] spawnPoints;
+
     private Transform player;
 
     void Start()
@@ -96,11 +99,20 @@ public class EnemySpawner : MonoBehaviour
 
     void Spawn(GameObject prefab)
     {
-        Vector2 center = player != null ? (Vector2)player.position : Vector2.zero;
+        Vector2 pos;
 
-        float angle = Random.Range(0f, Mathf.PI * 2f);
-        float distance = Random.Range(spawnMinDistance, spawnMaxDistance);
-        Vector2 pos = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * distance;
+        if (spawnPoints != null && spawnPoints.Length > 0)
+        {
+            Transform point = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            pos = point.position;
+        }
+        else
+        {
+            Vector2 center = player != null ? (Vector2)player.position : Vector2.zero;
+            float angle = Random.Range(0f, Mathf.PI * 2f);
+            float distance = Random.Range(spawnMinDistance, spawnMaxDistance);
+            pos = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * distance;
+        }
 
         Instantiate(prefab, pos, Quaternion.identity);
     }
