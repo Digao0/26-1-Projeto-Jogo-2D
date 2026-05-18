@@ -24,8 +24,21 @@ public class EnemySpawner : MonoBehaviour
     public GameObject skeletonArcherPrefab;
     public GameObject SkeletonPrefab;
 
-    public float spawnRangeX = 10f;
-    public float spawnRangeY = 5f;
+    [Header("Spawn ao redor do jogador")]
+    public float spawnMinDistance = 6f;
+    public float spawnMaxDistance = 10f;
+
+    [Header("Pontos fixos de spawn (opcional - ignora distância se preenchido)")]
+    public Transform[] spawnPoints;
+
+    private Transform player;
+
+    void Start()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.transform;
+    }
 
     // =============================
 
@@ -87,14 +100,20 @@ public class EnemySpawner : MonoBehaviour
     void Spawn(GameObject prefab)
     {
         Vector2 pos;
-        int side = Random.Range(0, 4);
-        switch (side)
+
+        if (spawnPoints != null && spawnPoints.Length > 0)
         {
-            case 0: pos = new Vector2(Random.Range(-spawnRangeX, spawnRangeX),  spawnRangeY); break; // topo
-            case 1: pos = new Vector2(Random.Range(-spawnRangeX, spawnRangeX), -spawnRangeY); break; // baixo
-            case 2: pos = new Vector2(-spawnRangeX, Random.Range(-spawnRangeY, spawnRangeY)); break; // esquerda
-            default: pos = new Vector2( spawnRangeX, Random.Range(-spawnRangeY, spawnRangeY)); break; // direita
+            Transform point = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            pos = point.position;
         }
+        else
+        {
+            Vector2 center = player != null ? (Vector2)player.position : Vector2.zero;
+            float angle = Random.Range(0f, Mathf.PI * 2f);
+            float distance = Random.Range(spawnMinDistance, spawnMaxDistance);
+            pos = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * distance;
+        }
+
         Instantiate(prefab, pos, Quaternion.identity);
     }
 }

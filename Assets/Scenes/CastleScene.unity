@@ -1925,8 +1925,9 @@ GameObject:
   m_Component:
   - component: {fileID: 131313625}
   - component: {fileID: 131313624}
+  - component: {fileID: 131313626}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: FOG_CENTER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2001,12 +2002,25 @@ Transform:
   m_GameObject: {fileID: 131313623}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5608, y: -0.1317, z: 0}
+  m_LocalPosition: {x: 5.51, y: -0.13, z: 0}
   m_LocalScale: {x: 8.060423, y: 8.141625, z: 7.710464}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &131313626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131313623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61e460e42b282a42a86262b5e25b3e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FogCenterController
+  fadeDuration: 2
 --- !u!1 &138716988
 GameObject:
   m_ObjectHideFlags: 0
@@ -8935,7 +8949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8c1b51c6104a547bce50c9a3496060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArenaGizmo
-  borderColor: {r: 1, g: 0.3, b: 0, a: 0.8}
 --- !u!1 &247515864
 GameObject:
   m_ObjectHideFlags: 0
@@ -14626,8 +14639,8 @@ MonoBehaviour:
   greatswordSkeletonPrefab: {fileID: 0}
   skeletonArcherPrefab: {fileID: 0}
   SkeletonPrefab: {fileID: 0}
-  spawnRangeX: 8
-  spawnRangeY: 4
+  spawnMinDistance: 6
+  spawnMaxDistance: 10
 --- !u!4 &639948059
 Transform:
   m_ObjectHideFlags: 0
@@ -167524,7 +167537,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.49, y: 0.01, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -167850,6 +167863,11 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 202edc3106ac0954789b07600f650d05, type: 2}
+    - target: {fileID: 1665382768669816518, guid: b9f1ff13cfc876c4eb14fa5d1cde5531,
+        type: 3}
+      propertyPath: hurtSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f177bc0fca422a4097279c0eaca8c72, type: 3}
     - target: {fileID: 2187544463220505764, guid: b9f1ff13cfc876c4eb14fa5d1cde5531,
         type: 3}
       propertyPath: m_IsActive
@@ -167973,17 +167991,17 @@ PrefabInstance:
     - target: {fileID: 2571800930666189723, guid: b38e8e41e48e84c4a8cfb2edebe5939c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2571800930666189723, guid: b38e8e41e48e84c4a8cfb2edebe5939c,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2571800930666189723, guid: b38e8e41e48e84c4a8cfb2edebe5939c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2571800930666189723, guid: b38e8e41e48e84c4a8cfb2edebe5939c,
         type: 3}
@@ -168098,17 +168116,17 @@ PrefabInstance:
     - target: {fileID: 7148785590130211369, guid: b38e8e41e48e84c4a8cfb2edebe5939c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7148785590130211369, guid: b38e8e41e48e84c4a8cfb2edebe5939c,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7148785590130211369, guid: b38e8e41e48e84c4a8cfb2edebe5939c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7148785590130211369, guid: b38e8e41e48e84c4a8cfb2edebe5939c,
         type: 3}
