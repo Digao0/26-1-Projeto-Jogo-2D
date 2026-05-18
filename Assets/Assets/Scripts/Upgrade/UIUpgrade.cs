@@ -42,13 +42,25 @@ public class UIUpgrade : MonoBehaviour
             return Rarity.Legendary;
     }
 
-    float GetValue(Rarity rarity)
+    float GetValue(Rarity rarity, UpgradeType type)
     {
+        if (type == UpgradeType.Speed)
+        {
+            switch (rarity)
+            {
+                case Rarity.Common:    return 0.5f;
+                case Rarity.Rare:      return 1f;
+                case Rarity.Epic:      return 1.5f;
+                case Rarity.Legendary: return 2.5f;
+            }
+            return 0.5f;
+        }
+
         switch (rarity)
         {
-            case Rarity.Common: return 5f;
-            case Rarity.Rare: return 10f;
-            case Rarity.Epic: return 20f;
+            case Rarity.Common:    return 5f;
+            case Rarity.Rare:      return 10f;
+            case Rarity.Epic:      return 20f;
             case Rarity.Legendary: return 40f;
         }
         return 5f;
@@ -87,8 +99,8 @@ public class UIUpgrade : MonoBehaviour
         TextMeshProUGUI txt = btn.GetComponentInChildren<TextMeshProUGUI>();
 
         Rarity rarity = GetRandomRarity();
-        float value = GetValue(rarity);
         UpgradeType type = GetRandomType();
+        float value = GetValue(rarity, type);
 
         string statName = "";
 

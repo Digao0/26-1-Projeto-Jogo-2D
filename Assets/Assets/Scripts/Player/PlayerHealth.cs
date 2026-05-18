@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip hurtSound;
 
     private int currentHealth;
+    private static int savedHealth = -1;
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -21,10 +22,15 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         stats = GetComponent<PlayerStats>();
-        currentHealth = (int)stats.maxHealth;
+        currentHealth = savedHealth > 0 ? Mathf.Min(savedHealth, (int)stats.maxHealth) : (int)stats.maxHealth;
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    public static void ResetSavedHealth()
+    {
+        savedHealth = -1;
     }
 
     public void TakeDamage(int damage, Transform enemy)
@@ -38,6 +44,7 @@ public class PlayerHealth : MonoBehaviour
 
         DamageNumber.Spawn(transform.position, damage, Color.red, transform);
         currentHealth = Mathf.Max(0, currentHealth - damage);
+        savedHealth = currentHealth;
 
         GetComponent<PlayerAttack>().ResetAttack();
         anim.SetTrigger("Hit");
@@ -106,6 +113,7 @@ public class PlayerHealth : MonoBehaviour
     public void Heal(int amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, (int)stats.maxHealth);
+        savedHealth = currentHealth;
     }
     
     public void TakeDamageNoKnockback(int damage)
@@ -117,6 +125,7 @@ public class PlayerHealth : MonoBehaviour
 
         DamageNumber.Spawn(transform.position, damage, Color.red, transform);
         currentHealth = Mathf.Max(0, currentHealth - damage);
+        savedHealth = currentHealth;
 
         anim.SetTrigger("Hit");
 

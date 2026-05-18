@@ -1,10 +1,12 @@
 using UnityEngine;
+using TMPro;
 
 public class UIHealth : MonoBehaviour
 {
     public PlayerHealth player;
     public RectTransform healthBarFill;
     public RectTransform healthBarBackground;
+    public TextMeshProUGUI healthText;
 
     private float maxWidth;
     private PlayerStats stats;
@@ -12,8 +14,6 @@ public class UIHealth : MonoBehaviour
     void Start()
     {
         maxWidth = healthBarBackground.rect.width;
-
-        // 🔥 pega os stats do player
         stats = player.GetComponent<PlayerStats>();
     }
 
@@ -30,5 +30,8 @@ public class UIHealth : MonoBehaviour
         float newWidth = Mathf.Lerp(currentWidth, targetPercent * maxWidth, Time.unscaledDeltaTime * 8f);
 
         healthBarFill.sizeDelta = new Vector2(newWidth, healthBarFill.sizeDelta.y);
+
+        if (healthText != null)
+            healthText.text = (int)currentHealth + " / " + (int)maxHealth;
     }
 }

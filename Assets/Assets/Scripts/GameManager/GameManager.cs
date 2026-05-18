@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
             PlayerSwordManager.Instance.lifeSwordBonusApplied = false;
         }
 
+        PlayerStats.ResetBonuses();
+        PlayerHealth.ResetSavedHealth();
+
         SceneManager.LoadScene("SampleScene");
     }
 }
