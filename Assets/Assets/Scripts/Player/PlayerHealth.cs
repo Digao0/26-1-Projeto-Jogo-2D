@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     public float knockbackDuration = 0.2f;
     public bool isKnockedBack = false;
 
+    public AudioClip hurtSound;
+
     private int currentHealth;
     private Animator anim;
     private Rigidbody2D rb;
@@ -35,6 +37,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isInvulnerable || currentHealth <= 0) return;
         isKnockedBack = true;
+
+        if (hurtSound != null)
+            AudioSource.PlayClipAtPoint(hurtSound, transform.position);
 
         DamageNumber.Spawn(transform.position, damage, Color.red, transform);
         currentHealth = Mathf.Max(0, currentHealth - damage);
@@ -128,6 +133,9 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamageNoKnockback(int damage)
     {
         if (isInvulnerable || currentHealth <= 0) return;
+
+        if (hurtSound != null)
+            AudioSource.PlayClipAtPoint(hurtSound, transform.position);
 
         DamageNumber.Spawn(transform.position, damage, Color.red, transform);
         currentHealth = Mathf.Max(0, currentHealth - damage);
