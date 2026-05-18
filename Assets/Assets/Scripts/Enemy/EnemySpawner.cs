@@ -86,11 +86,15 @@ public class EnemySpawner : MonoBehaviour
 
     void Spawn(GameObject prefab)
     {
-        Vector2 pos = new Vector2(
-            Random.Range(-spawnRangeX, spawnRangeX),
-            Random.Range(-spawnRangeY, spawnRangeY)
-        );
-
+        Vector2 pos;
+        int side = Random.Range(0, 4);
+        switch (side)
+        {
+            case 0: pos = new Vector2(Random.Range(-spawnRangeX, spawnRangeX),  spawnRangeY); break; // topo
+            case 1: pos = new Vector2(Random.Range(-spawnRangeX, spawnRangeX), -spawnRangeY); break; // baixo
+            case 2: pos = new Vector2(-spawnRangeX, Random.Range(-spawnRangeY, spawnRangeY)); break; // esquerda
+            default: pos = new Vector2( spawnRangeX, Random.Range(-spawnRangeY, spawnRangeY)); break; // direita
+        }
         Instantiate(prefab, pos, Quaternion.identity);
     }
 }

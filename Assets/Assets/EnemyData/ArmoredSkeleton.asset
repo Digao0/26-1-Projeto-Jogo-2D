@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: ArmoredSkeleton
   defaultSprite: {fileID: 7792352775276265700, guid: debf630d85b30094d9253dbdd0857117,
     type: 3}
-  maxHealth: 50
+  maxHealth: 140
   speed: 2
-  damage: 10
-  knockbackForce: 5
-  knockbackDuration: 0.3
+  damage: 20
+  knockbackForce: 2
+  knockbackDuration: 0.2
+  attackCooldown: 0.9
   idleClip: {fileID: 7400000, guid: 866b2c0a06631944ba001a27fb1cb507, type: 2}
   walkClip: {fileID: 7400000, guid: 3e29475e86ea50a4b8b25626e5b92302, type: 2}
   hurtClip: {fileID: 7400000, guid: 1072795b338cc6b4ca490a2e02165084, type: 2}

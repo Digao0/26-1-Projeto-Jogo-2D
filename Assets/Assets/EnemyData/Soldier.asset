@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: Soldier
   defaultSprite: {fileID: -7978735674136817684, guid: a02292e8b4a7a214a93c746df8cfdcf4,
     type: 3}
-  maxHealth: 50
-  speed: 2
-  damage: 10
+  maxHealth: 80
+  speed: 2.3
+  damage: 15
   knockbackForce: 5
   knockbackDuration: 0.3
+  attackCooldown: 1
   idleClip: {fileID: 7400000, guid: 1b5b6aece0fd4294096364e6bca8503b, type: 2}
   walkClip: {fileID: 7400000, guid: 9f4818e60fba1e843bf6480ac3061ef7, type: 2}
   hurtClip: {fileID: 7400000, guid: 4d132c103cdaeba45b61443c2a1c83be, type: 2}

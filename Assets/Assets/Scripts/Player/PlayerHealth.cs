@@ -20,6 +20,15 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+        if (PlayerSwordManager.Instance != null
+            && PlayerSwordManager.Instance.equippedSword == SwordType.Life
+            && !PlayerSwordManager.Instance.lifeSwordBonusApplied)
+        {
+            maxHealth += 50;
+            currentHealth = maxHealth;
+            PlayerSwordManager.Instance.lifeSwordBonusApplied = true;
+        }
     }
 
     public void TakeDamage(int damage, Transform enemy)
@@ -27,7 +36,8 @@ public class PlayerHealth : MonoBehaviour
         if (isInvulnerable || currentHealth <= 0) return;
         isKnockedBack = true;
 
-        currentHealth -= damage;
+        DamageNumber.Spawn(transform.position, damage, Color.red, transform);
+        currentHealth = Mathf.Max(0, currentHealth - damage);
 
         GetComponent<PlayerAttack>().ResetAttack();
 
@@ -76,6 +86,9 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Player morreu");
 
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<PlayerAttack>().enabled = false;
+
         // trava movimento
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
@@ -116,7 +129,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isInvulnerable || currentHealth <= 0) return;
 
-        currentHealth -= damage;
+        DamageNumber.Spawn(transform.position, damage, Color.red, transform);
+        currentHealth = Mathf.Max(0, currentHealth - damage);
         anim.SetTrigger("Hit");
 
         isInvulnerable = true;

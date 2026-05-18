@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: Werewolf
   defaultSprite: {fileID: -6702294005266946484, guid: e4bf0679d1efe7641968c67ea5e867d3,
     type: 3}
-  maxHealth: 50
-  speed: 2
-  damage: 10
-  knockbackForce: 5
+  maxHealth: 90
+  speed: 3
+  damage: 22
+  knockbackForce: 4
   knockbackDuration: 0.3
+  attackCooldown: 0.75
   idleClip: {fileID: 7400000, guid: e1205f86ebe6a8a4fb8726d0db6353d7, type: 2}
   walkClip: {fileID: 7400000, guid: 25f31682edefd1b43b69af14f010f0f7, type: 2}
   hurtClip: {fileID: 7400000, guid: cf02e9ea21cb78b428437cbe0ea549f4, type: 2}

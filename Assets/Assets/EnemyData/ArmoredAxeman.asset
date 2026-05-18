@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: ArmoredAxeman
   defaultSprite: {fileID: 3997445265733366731, guid: c4b2f8c8d775e4f42b9cf8b15572517c,
     type: 3}
-  maxHealth: 50
-  speed: 2
-  damage: 10
-  knockbackForce: 5
-  knockbackDuration: 0.3
+  maxHealth: 130
+  speed: 1.8
+  damage: 24
+  knockbackForce: 2.5
+  knockbackDuration: 0.2
+  attackCooldown: 0.8
   idleClip: {fileID: 7400000, guid: e0daf6becfee9cd499d7364c803cc104, type: 2}
   walkClip: {fileID: 7400000, guid: 082c30fd3bc6a0e4f9c7835554eba3f6, type: 2}
   hurtClip: {fileID: 7400000, guid: 286c99a0eaab0dd4ca09ed1384758617, type: 2}

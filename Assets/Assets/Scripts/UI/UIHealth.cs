@@ -18,7 +18,7 @@ public class UIHealth : MonoBehaviour
     {
         float targetPercent = (float)player.GetCurrentHealth() / player.maxHealth;
         float currentWidth = healthBarFill.sizeDelta.x;
-        float newWidth = Mathf.Lerp(currentWidth, targetPercent * maxWidth, Time.deltaTime * 8f);
+        float newWidth = Mathf.Lerp(currentWidth, targetPercent * maxWidth, Time.unscaledDeltaTime * 8f);
         healthBarFill.sizeDelta = new Vector2(newWidth, healthBarFill.sizeDelta.y);
     }
 }

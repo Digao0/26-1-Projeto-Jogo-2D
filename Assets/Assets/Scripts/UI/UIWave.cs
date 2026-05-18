@@ -7,7 +7,19 @@ public class UIWave : MonoBehaviour
     public TextMeshProUGUI waveText;
     public GameObject progressBar;
 
+    void Start()
+    {
+        var font = Resources.Load<TMP_FontAsset>("Fonts/MedievalSharp-Regular SDF");
+        if (font != null) waveText.font = font;
+        UpdateText();
+    }
+
     void Update()
+    {
+        UpdateText();
+    }
+
+    void UpdateText()
     {
         if (waveManager.isFinished)
         {

@@ -15,11 +15,12 @@ MonoBehaviour:
   enemyName: Werebear
   defaultSprite: {fileID: -195695515886222138, guid: 052164b8efc267b4e941592960812645,
     type: 3}
-  maxHealth: 50
-  speed: 2
-  damage: 10
-  knockbackForce: 5
-  knockbackDuration: 0.3
+  maxHealth: 270
+  speed: 1.8
+  damage: 30
+  knockbackForce: 1.5
+  knockbackDuration: 0.15
+  attackCooldown: 0.7
   idleClip: {fileID: 7400000, guid: 12a27f976aa0dba4f8b22e9715b0a8cc, type: 2}
   walkClip: {fileID: 7400000, guid: 3ab65c54aa161494bb8e29f91b1c7e25, type: 2}
   hurtClip: {fileID: 7400000, guid: 06e3d573e6b83a64eb6197e582f6f766, type: 2}

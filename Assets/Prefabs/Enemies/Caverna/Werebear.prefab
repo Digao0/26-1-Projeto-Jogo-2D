@@ -196,9 +196,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996eb3199450aea44adc0e04783ede39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFollow
-  speed: 2
-  damage: 10
-  attackCooldown: 1
+  data: {fileID: 11400000, guid: 273f3e619fdcf684596b1a8fe2acd218, type: 2}
+  speed: 1.8
+  damage: 30
+  attackCooldown: 0.7
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 4
 --- !u!114 &7575618326198964392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,9 +215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e75bc751695bb2439a5769016a76789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 50
-  knockbackForce: 5
-  knockbackDuration: 0.3
+  data: {fileID: 11400000, guid: 273f3e619fdcf684596b1a8fe2acd218, type: 2}
+  maxHealth: 270
+  knockbackForce: 1.5
+  knockbackDuration: 0.15
   deathAnimDuration: 0.33333334
   dropPrefab: {fileID: 0}
 --- !u!114 &8658555678232059708
