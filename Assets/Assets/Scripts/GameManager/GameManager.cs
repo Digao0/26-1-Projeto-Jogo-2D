@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour
     void RestartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        if (PlayerSwordManager.Instance != null)
+        {
+            PlayerSwordManager.Instance.equippedSword = SwordType.None;
+            PlayerSwordManager.Instance.lifeSwordBonusApplied = false;
+        }
+
+        SceneManager.LoadScene("SampleScene");
     }
 }
