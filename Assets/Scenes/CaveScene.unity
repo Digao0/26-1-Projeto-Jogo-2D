@@ -60175,7 +60175,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 02a247071fffc6c4dad9efe5f2d5156b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.291
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -69879,6 +69879,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1665382768669816518, guid: b9f1ff13cfc876c4eb14fa5d1cde5531,
+        type: 3}
+      propertyPath: hurtSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f177bc0fca422a4097279c0eaca8c72, type: 3}
     - target: {fileID: 2482351974130085675, guid: b9f1ff13cfc876c4eb14fa5d1cde5531,
         type: 3}
       propertyPath: m_Name

@@ -14639,9 +14639,8 @@ MonoBehaviour:
   greatswordSkeletonPrefab: {fileID: 0}
   skeletonArcherPrefab: {fileID: 0}
   SkeletonPrefab: {fileID: 0}
-  spawnRangeX: 8
-  spawnRangeY: 4
-  spawnPoints: []
+  spawnMinDistance: 6
+  spawnMaxDistance: 10
 --- !u!4 &639948059
 Transform:
   m_ObjectHideFlags: 0
@@ -167864,6 +167863,11 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 202edc3106ac0954789b07600f650d05, type: 2}
+    - target: {fileID: 1665382768669816518, guid: b9f1ff13cfc876c4eb14fa5d1cde5531,
+        type: 3}
+      propertyPath: hurtSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f177bc0fca422a4097279c0eaca8c72, type: 3}
     - target: {fileID: 2187544463220505764, guid: b9f1ff13cfc876c4eb14fa5d1cde5531,
         type: 3}
       propertyPath: m_IsActive

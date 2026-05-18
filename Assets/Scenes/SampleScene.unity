@@ -35360,7 +35360,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 7f0de2b88dffa32469801d80f4c1e4c4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.059
+  m_Volume: 0.034
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -39227,6 +39227,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.182
       objectReference: {fileID: 0}
+    - target: {fileID: 1665382768669816518, guid: b9f1ff13cfc876c4eb14fa5d1cde5531,
+        type: 3}
+      propertyPath: hurtSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f177bc0fca422a4097279c0eaca8c72, type: 3}
     - target: {fileID: 1862768973450446115, guid: b9f1ff13cfc876c4eb14fa5d1cde5531,
         type: 3}
       propertyPath: m_LocalScale.x
