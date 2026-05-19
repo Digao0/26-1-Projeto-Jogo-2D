@@ -9,6 +9,7 @@ Jogo 2D top-down de wave defense desenvolvido em Unity 6. O jogador percorre 3 f
 | Mover | WASD |
 | Atacar | Setas direcionais (4 direções) |
 | Reiniciar (Game Over) | R |
+| Pausar | esc |
 
 ## Fases
 
