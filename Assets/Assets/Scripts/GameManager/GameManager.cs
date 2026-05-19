@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameOver = true;
+        PauseManager.IsGameOver = true;
+
+        if (PauseManager.Instance != null)
+            PauseManager.Instance.Resume();
 
         gameOverUI.SetActive(true);
 
@@ -27,6 +31,7 @@ public class GameManager : MonoBehaviour
     void RestartGame()
     {
         Time.timeScale = 1f;
+        PauseManager.IsGameOver = false;
 
         if (PlayerSwordManager.Instance != null)
         {
