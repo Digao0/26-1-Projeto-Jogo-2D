@@ -90,6 +90,12 @@ public class WaveManager : MonoBehaviour
         nextWaveProgress = 1f;
 
         Debug.Log("Wave " + waveNumber + " - Inimigos: " + enemiesThisWave);
+
+        if (enemiesThisWave == 0)
+        {
+            Debug.LogWarning("Wave " + waveNumber + " sem inimigos configurados — avançando automaticamente.");
+            StartCoroutine(NextWave());
+        }
     }
 
     void SpawnAndCount(string type, int amount)
@@ -98,8 +104,8 @@ public class WaveManager : MonoBehaviour
 
         for (int i = 0; i < amount; i++)
         {
-            enemySpawner.SpawnSpecific(type);
-            enemiesAlive++;
+            if (enemySpawner.SpawnSpecific(type))
+                enemiesAlive++;
         }
     }
 

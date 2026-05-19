@@ -10,6 +10,9 @@ public class PlayerStats : MonoBehaviour
     private static float bonusSpeed = 0f;
     private static float bonusHealth = 0f;
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void ResetStatics() { bonusDamage = 0f; bonusSpeed = 0f; bonusHealth = 0f; }
+
     void Awake()
     {
         damage += bonusDamage;

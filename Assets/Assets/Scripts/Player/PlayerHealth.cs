@@ -13,6 +13,9 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
     private static int savedHealth = -1;
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void ResetStatics() { savedHealth = -1; }
+
     private Animator anim;
     private Rigidbody2D rb;
     private PlayerStats stats;

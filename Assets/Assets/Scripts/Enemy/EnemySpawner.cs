@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
 
     // =============================
 
-    public void SpawnSpecific(string type)
+    public bool SpawnSpecific(string type)
     {
         GameObject prefab = null;
 
@@ -89,10 +89,11 @@ public class EnemySpawner : MonoBehaviour
         if (prefab == null)
         {
             Debug.LogWarning("Prefab não encontrado para tipo: " + type);
-            return;
+            return false;
         }
 
         Spawn(prefab);
+        return true;
     }
 
     // =============================
