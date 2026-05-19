@@ -76,7 +76,7 @@ public class ItemSelectionUI : MonoBehaviour
             new Color(0.22f, 0.42f, 0.74f), SwordType.Ice);
 
         MakeCard(bg.transform, 2, "Espada da Vida",
-            "Aumenta sua vida máxima\nem 50 permanentemente.",
+            "Aumenta vida máxima em +50.\nAo atacar, causa dano bônus\nigual a 40% da sua vida atual.",
             new Color(0.12f, 0.52f, 0.18f), SwordType.Life);
     }
 

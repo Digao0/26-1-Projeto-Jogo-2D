@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIHealth : MonoBehaviour
@@ -15,6 +16,22 @@ public class UIHealth : MonoBehaviour
     {
         maxWidth = healthBarBackground.rect.width;
         stats = player.GetComponent<PlayerStats>();
+        ApplySwordBarColor();
+    }
+
+    void ApplySwordBarColor()
+    {
+        if (PlayerSwordManager.Instance == null) return;
+        Image fill = healthBarFill.GetComponent<Image>();
+        if (fill == null) return;
+
+        fill.color = PlayerSwordManager.Instance.equippedSword switch
+        {
+            SwordType.Fire => new Color(0.90f, 0.15f, 0.05f),
+            SwordType.Ice  => new Color(0.15f, 0.60f, 1.00f),
+            SwordType.Life => new Color(0.15f, 0.85f, 0.25f),
+            _              => fill.color
+        };
     }
 
     void Update()

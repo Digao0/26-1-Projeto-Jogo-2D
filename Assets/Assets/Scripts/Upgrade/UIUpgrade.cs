@@ -32,11 +32,11 @@ public class UIUpgrade : MonoBehaviour
     {
         float roll = Random.value;
 
-        if (roll < 0.5f)
+        if (roll < 0.70f)
             return Rarity.Common;
-        else if (roll < 0.8f)
+        else if (roll < 0.90f)
             return Rarity.Rare;
-        else if (roll < 0.95f)
+        else if (roll < 0.98f)
             return Rarity.Epic;
         else
             return Rarity.Legendary;
@@ -129,7 +129,10 @@ public class UIUpgrade : MonoBehaviour
         else if (type == UpgradeType.Speed)
             playerStats.AddSpeed(value);
         else
+        {
             playerStats.AddHealth(value);
+            playerStats.GetComponent<PlayerHealth>().Heal((int)value);
+        }
 
         Close();
     }

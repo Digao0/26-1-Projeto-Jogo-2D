@@ -16,15 +16,19 @@ public class AttackHitbox : MonoBehaviour
         EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
         if (enemy == null) return;
 
-        // 🔥 usa dano real do player (com upgrades)
         int damage = Mathf.RoundToInt(playerAttack.GetDamage());
 
-        enemy.TakeDamage(damage, transform);
+        // Espada da Vida: adiciona 40% da vida atual como dano bônus
+        if (PlayerSwordManager.Instance != null && PlayerSwordManager.Instance.equippedSword == SwordType.Life)
+        {
+            PlayerHealth ph = GetComponentInParent<PlayerHealth>();
+            if (ph != null)
+                damage += Mathf.RoundToInt(ph.GetCurrentHealth() * 0.4f);
+        }
 
-        // mostra número de dano
+        enemy.TakeDamage(damage, transform);
         DamageNumber.Spawn(collision.transform.position, damage, Color.red);
 
-        // ===== EFEITOS DA ESPADA =====
         if (PlayerSwordManager.Instance == null) return;
 
         switch (PlayerSwordManager.Instance.equippedSword)

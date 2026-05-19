@@ -70967,7 +70967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e868d7622aa5545bb30ef40705d8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  damage: 1000
+  damage: 10
   speed: 5
   maxHealth: 100
 --- !u!114 &2011025441
@@ -70982,7 +70982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e868d7622aa5545bb30ef40705d8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
-  damage: 1000
+  damage: 10
   speed: 5
   maxHealth: 100
 --- !u!1 &2026867738

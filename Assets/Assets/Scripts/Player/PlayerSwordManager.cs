@@ -26,6 +26,16 @@ public class PlayerSwordManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (equippedSword == SwordType.Life && !lifeSwordBonusApplied)
+        {
+            PlayerStats ps = FindObjectOfType<PlayerStats>();
+            if (ps != null)
+            {
+                ps.AddHealth(50);
+                lifeSwordBonusApplied = true;
+            }
+        }
+
         if (equippedSword != SwordType.None && labelCanvas == null)
             CreateSwordLabel();
     }
