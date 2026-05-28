@@ -47,3 +47,9 @@ desktop.ini
 *.log
 # Pasta de projeto duplicada
 ProjetoJogo2D/
+
+# Claude Code session data
+.claude/
+
+# Unity temp packaging
+.utmp/

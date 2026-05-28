@@ -40,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isInvulnerable || currentHealth <= 0) return;
 
+        Haptics.Impact();
         isKnockedBack = true;
 
         if (hurtSound != null)
@@ -122,6 +123,8 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamageNoKnockback(int damage)
     {
         if (isInvulnerable || currentHealth <= 0) return;
+
+        Haptics.Impact();
 
         if (hurtSound != null)
             AudioSource.PlayClipAtPoint(hurtSound, transform.position);

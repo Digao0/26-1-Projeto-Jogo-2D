@@ -120,7 +120,7 @@ public class PauseManager : MonoBehaviour
             new Color(0.30f, 0.12f, 0.04f, 1f), () => GoToMenu());
 
         // Texto de hint
-        MkTMP(panel.transform, "Hint", "[ESC] para continuar",
+        MkTMP(panel.transform, "Hint", "Toque em Continuar para voltar",
             new Vector2(0.05f, 0.10f), new Vector2(0.95f, 0.24f),
             22, new Color(Cream.r, Cream.g, Cream.b, 0.5f), FontStyles.Italic);
 

@@ -15,31 +15,38 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        health = GetComponent<PlayerHealth>();
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
+        health       = GetComponent<PlayerHealth>();
+        rb           = GetComponent<Rigidbody2D>();
+        anim         = GetComponent<Animator>();
+        sr           = GetComponent<SpriteRenderer>();
         playerAttack = GetComponent<PlayerAttack>();
-        stats = GetComponent<PlayerStats>();
+        stats        = GetComponent<PlayerStats>();
     }
 
     void Update()
     {
         movement = Vector2.zero;
 
+        // Teclado (PC / editor)
         if (Input.GetKey(KeyCode.A)) movement.x = -1;
         if (Input.GetKey(KeyCode.D)) movement.x = 1;
         if (Input.GetKey(KeyCode.W)) movement.y = 1;
         if (Input.GetKey(KeyCode.S)) movement.y = -1;
 
+        // Joystick virtual (mobile) — sobrescreve teclado se ativo
+        if (MobileInputManager.Instance != null)
+        {
+            var mobile = MobileInputManager.Instance.MoveInput;
+            if (mobile.magnitude > 0.1f)
+                movement = mobile;
+        }
+
         anim.SetFloat("Speed", movement.magnitude);
 
         if (!playerAttack.isAttacking)
         {
-            if (movement.x > 0)
-                sr.flipX = false;
-            else if (movement.x < 0)
-                sr.flipX = true;
+            if (movement.x > 0) sr.flipX = false;
+            else if (movement.x < 0) sr.flipX = true;
         }
     }
 

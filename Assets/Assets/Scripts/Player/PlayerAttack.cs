@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     public bool isAttacking = false;
 
     private string lastDirection = "Down";
+    private Vector2 _lastMobileDir = Vector2.down;
 
     [Header("Power-up de Dano")]
     public float damageMultiplier = 1f;
@@ -24,38 +25,43 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
+        anim  = GetComponent<Animator>();
+        sr    = GetComponent<SpriteRenderer>();
         stats = GetComponent<PlayerStats>();
     }
 
     void Update()
     {
+        // Atualiza direção a partir do joystick (mesmo sem atacar)
+        if (MobileInputManager.Instance != null)
+        {
+            var dir = MobileInputManager.Instance.MoveInput;
+            if (dir.magnitude > 0.1f)
+                _lastMobileDir = dir;
+        }
+
         if (!canAttack) return;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            lastDirection = "Up";
-            AttackTrigger();
-        }
+        // Setas do teclado (PC / editor)
+        if (Input.GetKeyDown(KeyCode.UpArrow))    { lastDirection = "Up";    AttackTrigger(); }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))  { lastDirection = "Down";  AttackTrigger(); }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))  { lastDirection = "Left";  AttackTrigger(); }
+        else if (Input.GetKeyDown(KeyCode.RightArrow)) { lastDirection = "Right"; AttackTrigger(); }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        // Botão de ataque mobile
+        if (MobileInputManager.Instance != null && MobileInputManager.Instance.ConsumeAttack())
         {
-            lastDirection = "Down";
+            lastDirection = VectorToDirection(_lastMobileDir);
             AttackTrigger();
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            lastDirection = "Left";
-            AttackTrigger();
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            lastDirection = "Right";
-            AttackTrigger();
-        }
+    // Converte vetor do joystick para direção cardinal
+    string VectorToDirection(Vector2 v)
+    {
+        if (Mathf.Abs(v.x) >= Mathf.Abs(v.y))
+            return v.x >= 0 ? "Right" : "Left";
+        return v.y > 0 ? "Up" : "Down";
     }
 
     public void ActivateHitbox()
@@ -63,9 +69,9 @@ public class PlayerAttack : MonoBehaviour
         CancelInvoke(nameof(DisableAll));
         DisableAll();
 
-        if (lastDirection == "Up") attackUp.SetActive(true);
-        if (lastDirection == "Down") attackDown.SetActive(true);
-        if (lastDirection == "Left") attackLeft.SetActive(true);
+        if (lastDirection == "Up")    attackUp.SetActive(true);
+        if (lastDirection == "Down")  attackDown.SetActive(true);
+        if (lastDirection == "Left")  attackLeft.SetActive(true);
         if (lastDirection == "Right") attackRight.SetActive(true);
 
         Invoke(nameof(DisableAll), 0.1f);
@@ -81,10 +87,11 @@ public class PlayerAttack : MonoBehaviour
 
     void AttackTrigger()
     {
-        canAttack = false;
+        Haptics.Light();
+        canAttack   = false;
         isAttacking = true;
 
-        if (lastDirection == "Left")  { sr.flipX = true; transform.rotation = Quaternion.identity; }
+        if (lastDirection == "Left")  { sr.flipX = true;  transform.rotation = Quaternion.identity; }
         if (lastDirection == "Right") { sr.flipX = false; transform.rotation = Quaternion.identity; }
         if (lastDirection == "Up")    { sr.flipX = false; transform.rotation = Quaternion.Euler(0, 0, 90); }
         if (lastDirection == "Down")  { sr.flipX = false; transform.rotation = Quaternion.Euler(0, 0, -90); }
@@ -94,12 +101,11 @@ public class PlayerAttack : MonoBehaviour
 
     public void ResetAttack()
     {
-        canAttack = true;
+        canAttack   = true;
         isAttacking = false;
         transform.rotation = Quaternion.identity;
     }
 
-    // 🔥 DANO REAL baseado no PlayerStats
     public float GetDamage()
     {
         return stats.damage * damageMultiplier;
@@ -130,7 +136,7 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         damageMultiplier = 1f;
-        boostCoroutine = null;
+        boostCoroutine   = null;
         if (audioObj != null) Destroy(audioObj);
     }
 }
